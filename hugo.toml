@@ -1,0 +1,33 @@
+baseURL = "https://blog.yosoyfunes.com/"
+languageCode = "es"
+title = "yosoyfunes"
+theme = "PaperMod"
+publishDir = "docs"
+
+[params]
+  author = "Matias"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+  [[params.social]]
+    name = "instagram"
+    url = "https://instagram.com/yosoyfunes"
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/yosoyfunes"
+  [[params.social]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/matiasanoniz"
+  [[params.social]]
+    name = "website"
+    url = "https://yosoyfunes.com"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "Acerca de"
+    url = "/about/"
+    weight = 10

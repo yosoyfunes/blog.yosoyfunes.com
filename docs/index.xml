@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>yosoyfunes</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on yosoyfunes</description>
+    <generator>Hugo -- 0.147.3</generator>
+    <language>es</language>
+    <lastBuildDate>Mon, 10 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Acerca de</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;¡Hola! Soy Matias y este es mi blog personal usando Hugo y PaperMod.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cómo instalar Docker</title>
+      <link>http://localhost:1313/posts/como-instalar-docker/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/como-instalar-docker/</guid>
+      <description>&lt;p&gt;En este post te explico cómo instalar Docker en tu sistema.&lt;/p&gt;
+&lt;h2 id=&#34;1-instalar-docker-en-linux&#34;&gt;1. Instalar Docker en Linux&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install docker.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start docker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl enable docker
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-instalar-docker-en-macos&#34;&gt;2. Instalar Docker en macOS&lt;/h2&gt;
+&lt;p&gt;Descarga e instala Docker Desktop desde:&lt;br&gt;
+&lt;a href=&#34;https://www.docker.com/products/docker-desktop/&#34;&gt;https://www.docker.com/products/docker-desktop/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-instalar-docker-en-windows&#34;&gt;3. Instalar Docker en Windows&lt;/h2&gt;
+&lt;p&gt;Descarga e instala Docker Desktop desde:&lt;br&gt;
+&lt;a href=&#34;https://www.docker.com/products/docker-desktop/&#34;&gt;https://www.docker.com/products/docker-desktop/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-verificar-la-instalación&#34;&gt;4. Verificar la instalación&lt;/h2&gt;
+&lt;p&gt;Ejecuta en la terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;¡Listo! Ahora tienes Docker instalado en tu sistema.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Perfil LocalStack</title>
+      <link>http://localhost:1313/posts/localstack-profile/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/localstack-profile/</guid>
+      <description>&lt;h1 id=&#34;configuración-de-un-perfil-personalizado&#34;&gt;Configuración de un perfil personalizado&lt;/h1&gt;
+&lt;p&gt;Puedes configurar un perfil personalizado para usar con LocalStack. Agrega el siguiente perfil a tu archivo de configuración de AWS (por defecto, este archivo está en ~/.aws/config):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[profile localstack]
+region=us-east-1
+output=json
+endpoint_url = http://localhost:4566
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Agrega el siguiente perfil a tu archivo de credenciales de AWS (por defecto, este archivo está en ~/.aws/credentials):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[localstack]
+aws_access_key_id=test
+aws_secret_access_key=test
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Ahora puedes usar el perfil localstack con la CLI de AWS:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws s3 ls --profile localstack
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Establecer el perfil por defecto&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
