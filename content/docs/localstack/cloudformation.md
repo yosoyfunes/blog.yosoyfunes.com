@@ -1,5 +1,5 @@
 ---
-title: "CloudFormation con LocalStack"
+title: "CloudFormation"
 weight: 4
 bookToc: true
 ---

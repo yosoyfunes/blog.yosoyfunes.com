@@ -263,14 +263,14 @@ Testing automatizado: Integra en pipelines de CI/CD
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/localstack/cloudformation/">
   <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
-  <meta property="og:title" content="CloudFormation con LocalStack">
+  <meta property="og:title" content="CloudFormation">
   <meta property="og:description" content="Usar CloudFormation con LocalStack localmente # CloudFormation es el servicio nativo de AWS para Infrastructure as Code. Con LocalStack puedes probar tus templates de CloudFormation localmente antes de desplegarlos en AWS.
 📝 Ejemplo básico: Crear un bucket S3 # Archivo s3.yaml # AWSTemplateFormatVersion: &#34;2010-09-09&#34; Description: &#34;Template básico para crear un bucket S3&#34; Resources: MyS3Bucket: Type: AWS::S3::Bucket Properties: BucketName: !Sub &#34;${AWS::StackName}-bucket&#34; Tags: - Key: TestKey Value: &#34;my bucket 1&#34; - Key: Environment Value: &#34;Development&#34; - Key: CreatedBy Value: &#34;LocalStack&#34; Outputs: BucketName: Description: &#34;Nombre del bucket S3 creado&#34; Value: !Ref MyS3Bucket Export: Name: !Sub &#34;${AWS::StackName}-BucketName&#34; BucketArn: Description: &#34;ARN del bucket S3&#34; Value: !GetAtt MyS3Bucket.Arn Export: Name: !Sub &#34;${AWS::StackName}-BucketArn&#34; 🚀 Desplegar el stack # Crear el stack # aws cloudformation create-stack \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --template-body file://s3.yaml \ --region us-east-1 Verificar el estado del stack # aws cloudformation describe-stacks \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --region us-east-1 Listar recursos del stack # aws cloudformation list-stack-resources \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --region us-east-1 📦 Ejemplo avanzado: Stack completo con múltiples recursos # Archivo complete-stack.yaml # AWSTemplateFormatVersion: &#34;2010-09-09&#34; Description: &#34;Stack completo con S3, DynamoDB y Lambda&#34; Parameters: Environment: Type: String Default: &#34;dev&#34; AllowedValues: [&#34;dev&#34;, &#34;staging&#34;, &#34;prod&#34;] Description: &#34;Ambiente de despliegue&#34; Resources: # Bucket S3 DataBucket: Type: AWS::S3::Bucket Properties: BucketName: !Sub &#34;${Environment}-data-bucket-${AWS::AccountId}&#34; VersioningConfiguration: Status: Enabled Tags: - Key: Environment Value: !Ref Environment # Tabla DynamoDB UserTable: Type: AWS::DynamoDB::Table Properties: TableName: !Sub &#34;${Environment}-users&#34; BillingMode: PAY_PER_REQUEST AttributeDefinitions: - AttributeName: userId AttributeType: S KeySchema: - AttributeName: userId KeyType: HASH Tags: - Key: Environment Value: !Ref Environment # Rol IAM para Lambda LambdaExecutionRole: Type: AWS::IAM::Role Properties: AssumeRolePolicyDocument: Version: &#39;2012-10-17&#39; Statement: - Effect: Allow Principal: Service: lambda.amazonaws.com Action: sts:AssumeRole ManagedPolicyArns: - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole Policies: - PolicyName: DynamoDBAccess PolicyDocument: Version: &#39;2012-10-17&#39; Statement: - Effect: Allow Action: - dynamodb:GetItem - dynamodb:PutItem - dynamodb:UpdateItem - dynamodb:DeleteItem Resource: !GetAtt UserTable.Arn # Función Lambda ProcessorFunction: Type: AWS::Lambda::Function Properties: FunctionName: !Sub &#34;${Environment}-processor&#34; Runtime: python3.9 Handler: index.handler Role: !GetAtt LambdaExecutionRole.Arn Code: ZipFile: | import json import boto3 def handler(event, context): print(f&#34;Received event: {json.dumps(event)}&#34;) return { &#39;statusCode&#39;: 200, &#39;body&#39;: json.dumps(&#39;Hello from LocalStack!&#39;) } Environment: Variables: TABLE_NAME: !Ref UserTable BUCKET_NAME: !Ref DataBucket Outputs: BucketName: Description: &#34;Nombre del bucket S3&#34; Value: !Ref DataBucket Export: Name: !Sub &#34;${AWS::StackName}-BucketName&#34; TableName: Description: &#34;Nombre de la tabla DynamoDB&#34; Value: !Ref UserTable Export: Name: !Sub &#34;${AWS::StackName}-TableName&#34; LambdaFunctionArn: Description: &#34;ARN de la función Lambda&#34; Value: !GetAtt ProcessorFunction.Arn Export: Name: !Sub &#34;${AWS::StackName}-LambdaArn&#34; Desplegar el stack completo # aws cloudformation create-stack \ --endpoint-url http://localhost:4566 \ --stack-name complete-stack \ --template-body file://complete-stack.yaml \ --parameters ParameterKey=Environment,ParameterValue=dev \ --capabilities CAPABILITY_IAM \ --region us-east-1 🔍 Comandos útiles para gestión de stacks # Actualizar un stack # aws cloudformation update-stack \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --template-body file://s3.yaml \ --region us-east-1 Eliminar un stack # aws cloudformation delete-stack \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --region us-east-1 Obtener outputs del stack # aws cloudformation describe-stacks \ --endpoint-url http://localhost:4566 \ --stack-name samplestack \ --query &#39;Stacks[0].Outputs&#39; \ --region us-east-1 Validar template # aws cloudformation validate-template \ --endpoint-url http://localhost:4566 \ --template-body file://s3.yaml \ --region us-east-1 ✅ Verificar recursos creados # # Verificar bucket S3 aws s3 ls --endpoint-url http://localhost:4566 # Verificar tabla DynamoDB aws dynamodb list-tables --endpoint-url http://localhost:4566 # Verificar función Lambda aws lambda list-functions --endpoint-url http://localhost:4566 🎯 Ventajas de usar CloudFormation con LocalStack # Validación rápida: Prueba templates sin costos Debugging local: Logs y errores accesibles localmente Desarrollo iterativo: Cambios rápidos sin esperar deployments Testing automatizado: Integra en pipelines de CI/CD ¡Ahora puedes desarrollar y probar tus templates de CloudFormation de forma local y eficiente!">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:modified_time" content="2025-06-26T23:22:38-03:00">
-<title>CloudFormation con LocalStack | Blog de Matias - DevOps &amp; Cloud</title>
+<title>CloudFormation | Blog de Matias - DevOps &amp; Cloud</title>
 <link rel="icon" href="/favicon.ico" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/localstack/cloudformation/">
@@ -356,7 +356,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+    <a href="/docs/localstack/profile/" class="">Perfiles AWS</a>
   
 
         </li>
@@ -369,7 +369,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+    <a href="/docs/localstack/terraform/" class="">Terraform</a>
   
 
         </li>
@@ -382,7 +382,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/cloudformation/" class="active">CloudFormation con LocalStack</a>
+    <a href="/docs/localstack/cloudformation/" class="active">CloudFormation</a>
   
 
         </li>
@@ -395,7 +395,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos</a>
   
 
         </li>
@@ -439,7 +439,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home con VirtualBox</a>
+    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home</a>
   
 
         </li>
@@ -485,7 +485,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>CloudFormation con LocalStack</h3>
+  <h3>CloudFormation</h3>
 
   <label for="toc-control">
     

@@ -1,5 +1,5 @@
 ---
-title: "Multipass en Windows Home con VirtualBox"
+title: "Multipass en Windows Home"
 weight: 2
 bookToc: true
 ---

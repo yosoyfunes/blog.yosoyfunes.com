@@ -124,7 +124,7 @@ Una vez creado el backend, puedes configurar Terraform para usarlo:">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/localstack/terraform/">
   <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
-  <meta property="og:title" content="Terraform con LocalStack">
+  <meta property="og:title" content="Terraform">
   <meta property="og:description" content="Usar Terraform con LocalStack para pruebas locales # Una de las grandes ventajas de LocalStack es poder probar nuestros scripts de Terraform localmente antes de desplegarlos en AWS. Esto nos permite ahorrar costos y acelerar el desarrollo.
 🎯 Configuración del provider AWS para LocalStack # Para usar Terraform con LocalStack, necesitas configurar el provider AWS para que apunte a los endpoints locales:
 Archivo main.tf # provider &#34;aws&#34; { region = &#34;us-east-1&#34; access_key = &#34;mock_access_key&#34; secret_key = &#34;mock_secret_key&#34; s3_force_path_style = true skip_credentials_validation = true skip_metadata_api_check = true skip_requesting_account_id = true endpoints { s3 = &#34;http://localhost:4566&#34; dynamodb = &#34;http://localhost:4566&#34; lambda = &#34;http://localhost:4566&#34; iam = &#34;http://localhost:4566&#34; ec2 = &#34;http://localhost:4566&#34; # Agrega más servicios según necesites } } # Ejemplo: Crear un bucket S3 resource &#34;aws_s3_bucket&#34; &#34;example&#34; { bucket = &#34;my-tf-test-bucket&#34; tags = { Name = &#34;My bucket&#34; Environment = &#34;Dev&#34; } } # Ejemplo: Configurar versionado del bucket resource &#34;aws_s3_bucket_versioning&#34; &#34;example&#34; { bucket = aws_s3_bucket.example.id versioning_configuration { status = &#34;Enabled&#34; } } 🚀 Ejecutar Terraform # 1. Inicializar Terraform # terraform init 2. Planificar los cambios # terraform plan -out=tfplan 3. Aplicar los cambios # terraform apply &#34;tfplan&#34; 📦 Ejemplo avanzado: Backend con S3 y DynamoDB # Archivo provider.tf # provider &#34;aws&#34; { region = &#34;us-east-1&#34; # Configuración para LocalStack access_key = &#34;test&#34; secret_key = &#34;test&#34; s3_force_path_style = true skip_credentials_validation = true skip_metadata_api_check = true skip_requesting_account_id = true endpoints { s3 = &#34;http://s3.localhost.localstack.cloud:4566&#34; dynamodb = &#34;http://localhost:4566&#34; kms = &#34;http://localhost:4566&#34; } } Archivo backend.tf # module &#34;backend&#34; { source = &#34;/terraform_modules/s3_dynamo_backend&#34; ## Variables requeridas bucket_name = &#34;my_terraform_state_bucket_name&#34; dynamodb_name = &#34;my_dynamodb_lock_state_table_name&#34; ## Variables opcionales ## Encriptación KMS o AES, por defecto es AES use_kms_encryption = true ## block_all_public_access - Por defecto está en false block_all_public_access = true } 🔧 Configuración de backend remoto # Una vez creado el backend, puedes configurar Terraform para usarlo:">
@@ -132,7 +132,7 @@ Archivo main.tf # provider &#34;aws&#34; { region = &#34;us-east-1&#34; access_k
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:modified_time" content="2025-06-26T23:22:38-03:00">
-<title>Terraform con LocalStack | Blog de Matias - DevOps &amp; Cloud</title>
+<title>Terraform | Blog de Matias - DevOps &amp; Cloud</title>
 <link rel="icon" href="/favicon.ico" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/localstack/terraform/">
@@ -218,7 +218,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+    <a href="/docs/localstack/profile/" class="">Perfiles AWS</a>
   
 
         </li>
@@ -231,7 +231,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/terraform/" class="active">Terraform con LocalStack</a>
+    <a href="/docs/localstack/terraform/" class="active">Terraform</a>
   
 
         </li>
@@ -244,7 +244,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation</a>
   
 
         </li>
@@ -257,7 +257,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos</a>
   
 
         </li>
@@ -301,7 +301,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home con VirtualBox</a>
+    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home</a>
   
 
         </li>
@@ -347,7 +347,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Terraform con LocalStack</h3>
+  <h3>Terraform</h3>
 
   <label for="toc-control">
     

@@ -1,5 +1,5 @@
 ---
-title: "Configuración de Perfiles"
+title: "Perfiles AWS"
 weight: 2
 bookToc: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Terraform con LocalStack"
+title: "Terraform"
 weight: 3
 bookToc: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Ejemplos Prácticos"
+title: "Ejemplos"
 weight: 5
 bookToc: true
 ---
