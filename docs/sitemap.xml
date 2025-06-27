@@ -9,13 +9,16 @@
     <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/maquinas-virtuales/multipass/</loc>
+    <lastmod>2025-06-27T00:15:39-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/profile/</loc>
     <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/maquinas-virtuales/</loc>
+    <lastmod>2025-06-27T00:15:39-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/maquinas-virtuales/multipass-windows/</loc>
+    <lastmod>2025-06-27T00:15:39-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/terraform/</loc>
     <lastmod>2025-06-26T23:22:38-03:00</lastmod>
@@ -31,9 +34,6 @@
   </url><url>
     <loc>http://localhost:1313/categories/AWS/</loc>
     <lastmod>2025-06-26T23:22:38-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-06-26T23:44:09-03:00</lastmod>
@@ -107,7 +107,10 @@
     <loc>http://localhost:1313/posts/localstack-profile/</loc>
     <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-06-27T00:15:39-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/</loc>
-    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
+    <lastmod>2025-06-27T00:15:39-03:00</lastmod>
   </url>
 </urlset>
