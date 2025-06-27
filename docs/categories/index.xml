@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Blog de Matias - DevOps &amp; Cloud</title>
-    <link>http://localhost:54755/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Blog de Matias - DevOps &amp; Cloud</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Sun, 18 May 2025 22:03:03 -0300</lastBuildDate>
-    <atom:link href="http://localhost:54755/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jun 2025 23:44:09 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS</title>
-      <link>http://localhost:54755/categories/AWS/</link>
+      <link>http://localhost:1313/categories/AWS/</link>
       <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
-      <guid>http://localhost:54755/categories/AWS/</guid>
+      <guid>http://localhost:1313/categories/AWS/</guid>
       <description></description>
     </item>
     <item>
       <title>DevOps</title>
-      <link>http://localhost:54755/categories/DevOps/</link>
+      <link>http://localhost:1313/categories/DevOps/</link>
       <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
-      <guid>http://localhost:54755/categories/DevOps/</guid>
+      <guid>http://localhost:1313/categories/DevOps/</guid>
       <description></description>
     </item>
     <item>
       <title>Tutoriales</title>
-      <link>http://localhost:54755/categories/Tutoriales/</link>
+      <link>http://localhost:1313/categories/Tutoriales/</link>
       <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
-      <guid>http://localhost:54755/categories/Tutoriales/</guid>
+      <guid>http://localhost:1313/categories/Tutoriales/</guid>
       <description></description>
     </item>
     <item>
       <title>Infrastructure as Code</title>
-      <link>http://localhost:54755/categories/Infrastructure-as-Code/</link>
+      <link>http://localhost:1313/categories/Infrastructure-as-Code/</link>
       <pubDate>Thu, 27 Jun 2024 02:00:00 +0000</pubDate>
-      <guid>http://localhost:54755/categories/Infrastructure-as-Code/</guid>
+      <guid>http://localhost:1313/categories/Infrastructure-as-Code/</guid>
       <description></description>
     </item>
   </channel>

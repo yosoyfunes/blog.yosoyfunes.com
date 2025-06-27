@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Multipass: Máquinas Virtuales Ubuntu Simplificadas
+  #
+
+Multipass es una herramienta desarrollada por Canonical que permite crear y gestionar máquinas virtuales Ubuntu de forma rápida y sencilla. Es perfecta para desarrollo, testing y experimentación.
+
+  🚀 Instalación
+  #
+
+
+  Instalación básica
+  #
+
+Descarga Multipass desde la 
+  página oficial y sigue las instrucciones para tu sistema operativo.
+
+  Verificar la instalación
+  #
+
+multipass version
+
+  📋 Comandos básicos
+  #
+
+
+  Crear una máquina virtual
+  #
+
+# VM básica con configuración por defecto
+multipass launch --name labs
+
+# VM con recursos específicos
+multipass launch --name labs --memory 4G --cpus 2 --disk 20G
+
+  Crear VM con cloud-init
+  #
+
+multipass launch --name labs --cloud-init cloud-init.yaml --memory 4G --cpus 2
+
+  ⚙️ Configuración con Cloud-init
+  #
+
+
+  Archivo cloud-init.yaml
+  #
+
+#cloud-config
+
+# Actualiza los paquetes del sistema
+package_update: true
+package_upgrade: true
+
+# Lista de paquetes a instalar
+packages:
+  - git
+  - docker.io
+  - python3
+  - python3-pip
+  - python3-venv
+  - curl
+  - unzip
+  - awscli
+  - openssh-client
+
+# Comandos a ejecutar después de la instalación de paquetes
+runcmd:
+  - |
+      # Instalar kubectl
+      curl -LO &#34;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&#34;
+      chmod &#43;x kubectl
+      mv kubectl /usr/local/bin/
+  - |
+      # Instalar minikube
+      curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+      chmod &#43;x minikube
+      mv minikube /usr/local/bin/
+  - |
+      # Instalar tfenv
+      curl -Lo tfenv.zip https://github.com/tfutils/tfenv/archive/refs/heads/master.zip
+      unzip tfenv.zip -d /usr/local/
+      mv /usr/local/tfenv-master /usr/local/tfenv
+      echo &#39;export PATH=&#34;$HOME/.tfenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.bashrc
+      ln -s /usr/local/tfenv/bin/tfenv /usr/local/bin/tfenv
+  - |
+      # Instalar Terraform usando tfenv
+      tfenv install latest
+      tfenv use latest
+  - |
+      # Configurar Docker
+      usermod -aG docker $USER
+      systemctl enable docker
+      systemctl start docker
+  - |
+      # Generar una clave SSH
+      mkdir -p ~/.ssh
+      ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N &#39;&#39;
+      eval &#34;$(ssh-agent -s)&#34;
+      ssh-add ~/.ssh/id_rsa
+
+# Mensaje final cuando todo está completo
+final_message: &#34;La instancia de Multipass está configurada y lista para usar.&#34;
+
+  🔧 Gestión de máquinas virtuales
+  #
+
+
+  Listar VMs
+  #
+
+multipass list
+
+  Acceder a una VM
+  #
+
+multipass shell labs
+
+  Información de una VM
+  #
+
+multipass info labs
+
+  Detener una VM
+  #
+
+multipass stop labs
+
+  Iniciar una VM
+  #
+
+multipass start labs
+
+  Eliminar una VM
+  #
+
+multipass delete labs
+multipass purge
+
+  ⚙️ Modificar configuración de VMs
+  #
+
+Para modificar los recursos de una VM existente, primero debes detenerla:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/maquinas-virtuales/multipass/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Multipass - Guía Completa">
+  <meta property="og:description" content="Multipass: Máquinas Virtuales Ubuntu Simplificadas # Multipass es una herramienta desarrollada por Canonical que permite crear y gestionar máquinas virtuales Ubuntu de forma rápida y sencilla. Es perfecta para desarrollo, testing y experimentación.
+🚀 Instalación # Instalación básica # Descarga Multipass desde la página oficial y sigue las instrucciones para tu sistema operativo.
+Verificar la instalación # multipass version 📋 Comandos básicos # Crear una máquina virtual # # VM básica con configuración por defecto multipass launch --name labs # VM con recursos específicos multipass launch --name labs --memory 4G --cpus 2 --disk 20G Crear VM con cloud-init # multipass launch --name labs --cloud-init cloud-init.yaml --memory 4G --cpus 2 ⚙️ Configuración con Cloud-init # Archivo cloud-init.yaml # #cloud-config # Actualiza los paquetes del sistema package_update: true package_upgrade: true # Lista de paquetes a instalar packages: - git - docker.io - python3 - python3-pip - python3-venv - curl - unzip - awscli - openssh-client # Comandos a ejecutar después de la instalación de paquetes runcmd: - | # Instalar kubectl curl -LO &#34;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&#34; chmod &#43;x kubectl mv kubectl /usr/local/bin/ - | # Instalar minikube curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 chmod &#43;x minikube mv minikube /usr/local/bin/ - | # Instalar tfenv curl -Lo tfenv.zip https://github.com/tfutils/tfenv/archive/refs/heads/master.zip unzip tfenv.zip -d /usr/local/ mv /usr/local/tfenv-master /usr/local/tfenv echo &#39;export PATH=&#34;$HOME/.tfenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.bashrc ln -s /usr/local/tfenv/bin/tfenv /usr/local/bin/tfenv - | # Instalar Terraform usando tfenv tfenv install latest tfenv use latest - | # Configurar Docker usermod -aG docker $USER systemctl enable docker systemctl start docker - | # Generar una clave SSH mkdir -p ~/.ssh ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N &#39;&#39; eval &#34;$(ssh-agent -s)&#34; ssh-add ~/.ssh/id_rsa # Mensaje final cuando todo está completo final_message: &#34;La instancia de Multipass está configurada y lista para usar.&#34; 🔧 Gestión de máquinas virtuales # Listar VMs # multipass list Acceder a una VM # multipass shell labs Información de una VM # multipass info labs Detener una VM # multipass stop labs Iniciar una VM # multipass start labs Eliminar una VM # multipass delete labs multipass purge ⚙️ Modificar configuración de VMs # Para modificar los recursos de una VM existente, primero debes detenerla:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Multipass - Guía Completa | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/maquinas-virtuales/multipass/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.3d9e23fd48f1aef047ac01bc91c868c651ed167b134675441e7487b289bbd3c0.js" integrity="sha256-PZ4j/UjxrvBHrAG8kchoxlHtFnsTRnVEHnSHsom708A=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/" class="">Máquinas Virtuales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass/" class="active">Multipass - Guía Completa</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home con VirtualBox</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Multipass - Guía Completa</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#multipass-máquinas-virtuales-ubuntu-simplificadas">Multipass: Máquinas Virtuales Ubuntu Simplificadas</a>
+      <ul>
+        <li><a href="#-instalación">🚀 Instalación</a>
+          <ul>
+            <li><a href="#instalación-básica">Instalación básica</a></li>
+            <li><a href="#verificar-la-instalación">Verificar la instalación</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comandos-básicos">📋 Comandos básicos</a>
+          <ul>
+            <li><a href="#crear-una-máquina-virtual">Crear una máquina virtual</a></li>
+            <li><a href="#crear-vm-con-cloud-init">Crear VM con cloud-init</a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-con-cloud-init">⚙️ Configuración con Cloud-init</a>
+          <ul>
+            <li><a href="#archivo-cloud-inityaml">Archivo <code>cloud-init.yaml</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-gestión-de-máquinas-virtuales">🔧 Gestión de máquinas virtuales</a>
+          <ul>
+            <li><a href="#listar-vms">Listar VMs</a></li>
+            <li><a href="#acceder-a-una-vm">Acceder a una VM</a></li>
+            <li><a href="#información-de-una-vm">Información de una VM</a></li>
+            <li><a href="#detener-una-vm">Detener una VM</a></li>
+            <li><a href="#iniciar-una-vm">Iniciar una VM</a></li>
+            <li><a href="#eliminar-una-vm">Eliminar una VM</a></li>
+          </ul>
+        </li>
+        <li><a href="#-modificar-configuración-de-vms">⚙️ Modificar configuración de VMs</a></li>
+        <li><a href="#-compartir-archivos">📁 Compartir archivos</a>
+          <ul>
+            <li><a href="#montar-directorios">Montar directorios</a></li>
+            <li><a href="#transferir-archivos">Transferir archivos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-snapshots">📸 Snapshots</a>
+          <ul>
+            <li><a href="#crear-snapshot">Crear snapshot</a></li>
+            <li><a href="#listar-snapshots">Listar snapshots</a></li>
+            <li><a href="#restaurar-snapshot">Restaurar snapshot</a></li>
+            <li><a href="#eliminar-snapshot">Eliminar snapshot</a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-de-red">🌐 Configuración de red</a>
+          <ul>
+            <li><a href="#obtener-ip-de-la-vm">Obtener IP de la VM</a></li>
+            <li><a href="#configurar-port-forwarding">Configurar port forwarding</a></li>
+          </ul>
+        </li>
+        <li><a href="#-solución-de-problemas">🔍 Solución de problemas</a>
+          <ul>
+            <li><a href="#verificar-el-servicio">Verificar el servicio</a></li>
+            <li><a href="#reiniciar-el-servicio">Reiniciar el servicio</a></li>
+            <li><a href="#logs-de-multipass">Logs de Multipass</a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-prácticos">🎯 Casos de uso prácticos</a>
+          <ul>
+            <li><a href="#entorno-de-desarrollo-web">Entorno de desarrollo web</a></li>
+            <li><a href="#entorno-docker">Entorno Docker</a></li>
+            <li><a href="#entorno-python">Entorno Python</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">📚 Recursos adicionales</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="multipass-máquinas-virtuales-ubuntu-simplificadas">
+  Multipass: Máquinas Virtuales Ubuntu Simplificadas
+  <a class="anchor" href="#multipass-m%c3%a1quinas-virtuales-ubuntu-simplificadas">#</a>
+</h1>
+<p>Multipass es una herramienta desarrollada por Canonical que permite crear y gestionar máquinas virtuales Ubuntu de forma rápida y sencilla. Es perfecta para desarrollo, testing y experimentación.</p>
+<h2 id="-instalación">
+  🚀 Instalación
+  <a class="anchor" href="#-instalaci%c3%b3n">#</a>
+</h2>
+<h3 id="instalación-básica">
+  Instalación básica
+  <a class="anchor" href="#instalaci%c3%b3n-b%c3%a1sica">#</a>
+</h3>
+<p>Descarga Multipass desde la 
+  <a href="https://multipass.run/docs/tutorial">página oficial</a> y sigue las instrucciones para tu sistema operativo.</p>
+<h3 id="verificar-la-instalación">
+  Verificar la instalación
+  <a class="anchor" href="#verificar-la-instalaci%c3%b3n">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass version
+</span></span></code></pre></div><h2 id="-comandos-básicos">
+  📋 Comandos básicos
+  <a class="anchor" href="#-comandos-b%c3%a1sicos">#</a>
+</h2>
+<h3 id="crear-una-máquina-virtual">
+  Crear una máquina virtual
+  <a class="anchor" href="#crear-una-m%c3%a1quina-virtual">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># VM básica con configuración por defecto</span>
+</span></span><span style="display:flex;"><span>multipass launch --name labs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># VM con recursos específicos</span>
+</span></span><span style="display:flex;"><span>multipass launch --name labs --memory 4G --cpus <span style="color:#ae81ff">2</span> --disk 20G
+</span></span></code></pre></div><h3 id="crear-vm-con-cloud-init">
+  Crear VM con cloud-init
+  <a class="anchor" href="#crear-vm-con-cloud-init">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass launch --name labs --cloud-init cloud-init.yaml --memory 4G --cpus <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h2 id="-configuración-con-cloud-init">
+  ⚙️ Configuración con Cloud-init
+  <a class="anchor" href="#-configuraci%c3%b3n-con-cloud-init">#</a>
+</h2>
+<h3 id="archivo-cloud-inityaml">
+  Archivo <code>cloud-init.yaml</code>
+  <a class="anchor" href="#archivo-cloud-inityaml">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#cloud-config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Actualiza los paquetes del sistema</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package_update</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package_upgrade</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lista de paquetes a instalar</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker.io</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3-pip</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3-venv</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">curl</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">unzip</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">awscli</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">openssh-client</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Comandos a ejecutar después de la instalación de paquetes</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runcmd</span>:
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Instalar kubectl
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      curl -LO &#34;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      chmod +x kubectl
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      mv kubectl /usr/local/bin/</span>
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Instalar minikube
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      chmod +x minikube
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      mv minikube /usr/local/bin/</span>
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Instalar tfenv
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      curl -Lo tfenv.zip https://github.com/tfutils/tfenv/archive/refs/heads/master.zip
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      unzip tfenv.zip -d /usr/local/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      mv /usr/local/tfenv-master /usr/local/tfenv
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      echo &#39;export PATH=&#34;$HOME/.tfenv/bin:$PATH&#34;&#39; &gt;&gt; ~/.bashrc
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ln -s /usr/local/tfenv/bin/tfenv /usr/local/bin/tfenv</span>
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Instalar Terraform usando tfenv
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      tfenv install latest
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      tfenv use latest</span>
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Configurar Docker
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      usermod -aG docker $USER
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      systemctl enable docker
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      systemctl start docker</span>
+</span></span><span style="display:flex;"><span>  - |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      # Generar una clave SSH
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      mkdir -p ~/.ssh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N &#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      eval &#34;$(ssh-agent -s)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ssh-add ~/.ssh/id_rsa</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mensaje final cuando todo está completo</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">final_message</span>: <span style="color:#e6db74">&#34;La instancia de Multipass está configurada y lista para usar.&#34;</span>
+</span></span></code></pre></div><h2 id="-gestión-de-máquinas-virtuales">
+  🔧 Gestión de máquinas virtuales
+  <a class="anchor" href="#-gesti%c3%b3n-de-m%c3%a1quinas-virtuales">#</a>
+</h2>
+<h3 id="listar-vms">
+  Listar VMs
+  <a class="anchor" href="#listar-vms">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass list
+</span></span></code></pre></div><h3 id="acceder-a-una-vm">
+  Acceder a una VM
+  <a class="anchor" href="#acceder-a-una-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass shell labs
+</span></span></code></pre></div><h3 id="información-de-una-vm">
+  Información de una VM
+  <a class="anchor" href="#informaci%c3%b3n-de-una-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass info labs
+</span></span></code></pre></div><h3 id="detener-una-vm">
+  Detener una VM
+  <a class="anchor" href="#detener-una-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass stop labs
+</span></span></code></pre></div><h3 id="iniciar-una-vm">
+  Iniciar una VM
+  <a class="anchor" href="#iniciar-una-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass start labs
+</span></span></code></pre></div><h3 id="eliminar-una-vm">
+  Eliminar una VM
+  <a class="anchor" href="#eliminar-una-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass delete labs
+</span></span><span style="display:flex;"><span>multipass purge
+</span></span></code></pre></div><h2 id="-modificar-configuración-de-vms">
+  ⚙️ Modificar configuración de VMs
+  <a class="anchor" href="#-modificar-configuraci%c3%b3n-de-vms">#</a>
+</h2>
+<p>Para modificar los recursos de una VM existente, primero debes detenerla:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Detener la VM</span>
+</span></span><span style="display:flex;"><span>multipass stop handsome-ling
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Modificar recursos</span>
+</span></span><span style="display:flex;"><span>multipass set local.handsome-ling.cpus<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>multipass set local.handsome-ling.disk<span style="color:#f92672">=</span>60G
+</span></span><span style="display:flex;"><span>multipass set local.handsome-ling.memory<span style="color:#f92672">=</span>7G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Iniciar la VM</span>
+</span></span><span style="display:flex;"><span>multipass start handsome-ling
+</span></span></code></pre></div><blockquote>
+<p><strong>Nota</strong>: <code>handsome-ling</code> es el nombre de la instancia. Reemplaza con el nombre de tu VM.</p></blockquote>
+<h2 id="-compartir-archivos">
+  📁 Compartir archivos
+  <a class="anchor" href="#-compartir-archivos">#</a>
+</h2>
+<h3 id="montar-directorios">
+  Montar directorios
+  <a class="anchor" href="#montar-directorios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Montar directorio del host en la VM</span>
+</span></span><span style="display:flex;"><span>multipass mount /ruta/local labs:/ruta/en/vm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Desmontar</span>
+</span></span><span style="display:flex;"><span>multipass umount labs:/ruta/en/vm
+</span></span></code></pre></div><h3 id="transferir-archivos">
+  Transferir archivos
+  <a class="anchor" href="#transferir-archivos">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Copiar archivo al VM</span>
+</span></span><span style="display:flex;"><span>multipass transfer archivo.txt labs:~/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copiar archivo desde VM</span>
+</span></span><span style="display:flex;"><span>multipass transfer labs:~/archivo.txt ./
+</span></span></code></pre></div><h2 id="-snapshots">
+  📸 Snapshots
+  <a class="anchor" href="#-snapshots">#</a>
+</h2>
+<h3 id="crear-snapshot">
+  Crear snapshot
+  <a class="anchor" href="#crear-snapshot">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass snapshot create labs snapshot-inicial
+</span></span></code></pre></div><h3 id="listar-snapshots">
+  Listar snapshots
+  <a class="anchor" href="#listar-snapshots">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass snapshot list labs
+</span></span></code></pre></div><h3 id="restaurar-snapshot">
+  Restaurar snapshot
+  <a class="anchor" href="#restaurar-snapshot">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass snapshot restore labs snapshot-inicial
+</span></span></code></pre></div><h3 id="eliminar-snapshot">
+  Eliminar snapshot
+  <a class="anchor" href="#eliminar-snapshot">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass snapshot delete labs snapshot-inicial
+</span></span></code></pre></div><h2 id="-configuración-de-red">
+  🌐 Configuración de red
+  <a class="anchor" href="#-configuraci%c3%b3n-de-red">#</a>
+</h2>
+<h3 id="obtener-ip-de-la-vm">
+  Obtener IP de la VM
+  <a class="anchor" href="#obtener-ip-de-la-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>multipass info labs | grep IPv4
+</span></span></code></pre></div><h3 id="configurar-port-forwarding">
+  Configurar port forwarding
+  <a class="anchor" href="#configurar-port-forwarding">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Ejemplo para acceder a un servicio web en puerto 8080</span>
+</span></span><span style="display:flex;"><span>multipass exec labs -- sudo ufw allow <span style="color:#ae81ff">8080</span>
+</span></span></code></pre></div><h2 id="-solución-de-problemas">
+  🔍 Solución de problemas
+  <a class="anchor" href="#-soluci%c3%b3n-de-problemas">#</a>
+</h2>
+<h3 id="verificar-el-servicio">
+  Verificar el servicio
+  <a class="anchor" href="#verificar-el-servicio">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># En Linux/macOS</span>
+</span></span><span style="display:flex;"><span>sudo systemctl status multipass
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># En Windows (PowerShell como administrador)</span>
+</span></span><span style="display:flex;"><span>Get-Service -Name multipass
+</span></span></code></pre></div><h3 id="reiniciar-el-servicio">
+  Reiniciar el servicio
+  <a class="anchor" href="#reiniciar-el-servicio">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># En Linux/macOS</span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart multipass
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># En Windows (PowerShell como administrador)</span>
+</span></span><span style="display:flex;"><span>Restart-Service -Name multipass
+</span></span></code></pre></div><h3 id="logs-de-multipass">
+  Logs de Multipass
+  <a class="anchor" href="#logs-de-multipass">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Ver logs</span>
+</span></span><span style="display:flex;"><span>multipass logs labs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Logs del sistema</span>
+</span></span><span style="display:flex;"><span>journalctl -u multipass
+</span></span></code></pre></div><h2 id="-casos-de-uso-prácticos">
+  🎯 Casos de uso prácticos
+  <a class="anchor" href="#-casos-de-uso-pr%c3%a1cticos">#</a>
+</h2>
+<h3 id="entorno-de-desarrollo-web">
+  Entorno de desarrollo web
+  <a class="anchor" href="#entorno-de-desarrollo-web">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#cloud-config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">nodejs</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">npm</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">nginx</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runcmd</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">npm install -g yarn</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">systemctl enable nginx</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">systemctl start nginx</span>
+</span></span></code></pre></div><h3 id="entorno-docker">
+  Entorno Docker
+  <a class="anchor" href="#entorno-docker">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#cloud-config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker.io</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker-compose</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runcmd</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">usermod -aG docker ubuntu</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">systemctl enable docker</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">systemctl start docker</span>
+</span></span></code></pre></div><h3 id="entorno-python">
+  Entorno Python
+  <a class="anchor" href="#entorno-python">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e">#cloud-config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3-pip</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3-venv</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python3-dev</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runcmd</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">pip3 install virtualenv</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">pip3 install jupyter</span>
+</span></span></code></pre></div><h2 id="-recursos-adicionales">
+  📚 Recursos adicionales
+  <a class="anchor" href="#-recursos-adicionales">#</a>
+</h2>
+<ul>
+<li>
+  <a href="https://multipass.run/docs">Documentación oficial</a></li>
+<li>
+  <a href="https://multipass.run/docs/modify-an-instance">Modificar instancias</a></li>
+<li>
+  <a href="https://multipass.run/docs/multipass-gui-client">GUI Client</a></li>
+<li>
+  <a href="https://multipass.run/docs/tutorial">Tutorial oficial</a></li>
+</ul>
+<p>¡Con Multipass puedes crear entornos de desarrollo Ubuntu limpios y configurados en minutos!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/maquinas-virtuales/multipass.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#multipass-máquinas-virtuales-ubuntu-simplificadas">Multipass: Máquinas Virtuales Ubuntu Simplificadas</a>
+      <ul>
+        <li><a href="#-instalación">🚀 Instalación</a>
+          <ul>
+            <li><a href="#instalación-básica">Instalación básica</a></li>
+            <li><a href="#verificar-la-instalación">Verificar la instalación</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comandos-básicos">📋 Comandos básicos</a>
+          <ul>
+            <li><a href="#crear-una-máquina-virtual">Crear una máquina virtual</a></li>
+            <li><a href="#crear-vm-con-cloud-init">Crear VM con cloud-init</a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-con-cloud-init">⚙️ Configuración con Cloud-init</a>
+          <ul>
+            <li><a href="#archivo-cloud-inityaml">Archivo <code>cloud-init.yaml</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-gestión-de-máquinas-virtuales">🔧 Gestión de máquinas virtuales</a>
+          <ul>
+            <li><a href="#listar-vms">Listar VMs</a></li>
+            <li><a href="#acceder-a-una-vm">Acceder a una VM</a></li>
+            <li><a href="#información-de-una-vm">Información de una VM</a></li>
+            <li><a href="#detener-una-vm">Detener una VM</a></li>
+            <li><a href="#iniciar-una-vm">Iniciar una VM</a></li>
+            <li><a href="#eliminar-una-vm">Eliminar una VM</a></li>
+          </ul>
+        </li>
+        <li><a href="#-modificar-configuración-de-vms">⚙️ Modificar configuración de VMs</a></li>
+        <li><a href="#-compartir-archivos">📁 Compartir archivos</a>
+          <ul>
+            <li><a href="#montar-directorios">Montar directorios</a></li>
+            <li><a href="#transferir-archivos">Transferir archivos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-snapshots">📸 Snapshots</a>
+          <ul>
+            <li><a href="#crear-snapshot">Crear snapshot</a></li>
+            <li><a href="#listar-snapshots">Listar snapshots</a></li>
+            <li><a href="#restaurar-snapshot">Restaurar snapshot</a></li>
+            <li><a href="#eliminar-snapshot">Eliminar snapshot</a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-de-red">🌐 Configuración de red</a>
+          <ul>
+            <li><a href="#obtener-ip-de-la-vm">Obtener IP de la VM</a></li>
+            <li><a href="#configurar-port-forwarding">Configurar port forwarding</a></li>
+          </ul>
+        </li>
+        <li><a href="#-solución-de-problemas">🔍 Solución de problemas</a>
+          <ul>
+            <li><a href="#verificar-el-servicio">Verificar el servicio</a></li>
+            <li><a href="#reiniciar-el-servicio">Reiniciar el servicio</a></li>
+            <li><a href="#logs-de-multipass">Logs de Multipass</a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-prácticos">🎯 Casos de uso prácticos</a>
+          <ul>
+            <li><a href="#entorno-de-desarrollo-web">Entorno de desarrollo web</a></li>
+            <li><a href="#entorno-docker">Entorno Docker</a></li>
+            <li><a href="#entorno-python">Entorno Python</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">📚 Recursos adicionales</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

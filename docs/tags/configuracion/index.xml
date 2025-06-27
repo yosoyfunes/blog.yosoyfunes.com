@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Configuracion on Blog de Matias - DevOps &amp; Cloud</title>
-    <link>http://localhost:54755/tags/configuracion/</link>
+    <link>http://localhost:1313/tags/configuracion/</link>
     <description>Recent content in Configuracion on Blog de Matias - DevOps &amp; Cloud</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Sun, 18 May 2025 22:03:03 -0300</lastBuildDate>
-    <atom:link href="http://localhost:54755/tags/configuracion/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Jun 2025 23:22:38 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/configuracion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configurar perfil AWS para LocalStack</title>
-      <link>http://localhost:54755/posts/localstack-profile/</link>
+      <link>http://localhost:1313/posts/localstack-profile/</link>
       <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:54755/posts/localstack-profile/</guid>
+      <guid>http://localhost:1313/posts/localstack-profile/</guid>
       <description>&lt;p&gt;Configurar un perfil personalizado de AWS para LocalStack te permite alternar fácilmente entre tu entorno local y AWS real sin cambiar configuraciones constantemente.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-configuración-del-perfil-localstack&#34;&gt;&#xA;  🔧 Configuración del perfil LocalStack&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-configuraci%c3%b3n-del-perfil-localstack&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-configurar-el-archivo-de-configuración&#34;&gt;&#xA;  1. Configurar el archivo de configuración&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-configurar-el-archivo-de-configuraci%c3%b3n&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Agrega el siguiente perfil a tu archivo de configuración de AWS (&lt;code&gt;~/.aws/config&lt;/code&gt;):&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;[profile localstack]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;region&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;us-east-1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;output&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;json&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;endpoint_url&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;http://localhost:4566&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-configurar-las-credenciales&#34;&gt;&#xA;  2. Configurar las credenciales&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#2-configurar-las-credenciales&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Agrega el siguiente perfil a tu archivo de credenciales de AWS (&lt;code&gt;~/.aws/credentials&lt;/code&gt;):&lt;/p&gt;</description>
     </item>
   </channel>

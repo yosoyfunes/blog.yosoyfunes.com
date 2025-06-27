@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Máquinas Virtuales para Desarrollo
+  #
+
+Las máquinas virtuales son una herramienta fundamental para el desarrollo moderno, permitiendo crear entornos aislados, reproducibles y consistentes para diferentes proyectos y tecnologías.
+
+  🎯 ¿Por qué usar máquinas virtuales?
+  #
+
+Las máquinas virtuales ofrecen múltiples ventajas para desarrolladores y equipos DevOps:
+
+Aislamiento completo - Cada proyecto en su propio entorno
+Reproducibilidad - Misma configuración en todos los equipos
+Experimentación segura - Prueba sin afectar tu sistema principal
+Múltiples SO - Ejecuta diferentes sistemas operativos simultáneamente
+Snapshots - Guarda estados específicos para rollback rápido
+
+
+  💻 Multipass: Virtualización Ubuntu Simplificada
+  #
+
+Multipass es una herramienta desarrollada por Canonical que simplifica la creación y gestión de máquinas virtuales Ubuntu. Es perfecta para:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/maquinas-virtuales/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Máquinas Virtuales">
+  <meta property="og:description" content="Máquinas Virtuales para Desarrollo # Las máquinas virtuales son una herramienta fundamental para el desarrollo moderno, permitiendo crear entornos aislados, reproducibles y consistentes para diferentes proyectos y tecnologías.
+🎯 ¿Por qué usar máquinas virtuales? # Las máquinas virtuales ofrecen múltiples ventajas para desarrolladores y equipos DevOps:
+Aislamiento completo - Cada proyecto en su propio entorno Reproducibilidad - Misma configuración en todos los equipos Experimentación segura - Prueba sin afectar tu sistema principal Múltiples SO - Ejecuta diferentes sistemas operativos simultáneamente Snapshots - Guarda estados específicos para rollback rápido 💻 Multipass: Virtualización Ubuntu Simplificada # Multipass es una herramienta desarrollada por Canonical que simplifica la creación y gestión de máquinas virtuales Ubuntu. Es perfecta para:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+<title>Máquinas Virtuales | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/maquinas-virtuales/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.3d9e23fd48f1aef047ac01bc91c868c651ed167b134675441e7487b289bbd3c0.js" integrity="sha256-PZ4j/UjxrvBHrAG8kchoxlHtFnsTRnVEHnSHsom708A=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/maquinas-virtuales/index.xml" title="Blog de Matias - DevOps & Cloud" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/" class="active">Máquinas Virtuales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass/" class="">Multipass - Guía Completa</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass-windows/" class="">Multipass en Windows Home con VirtualBox</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Máquinas Virtuales</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#máquinas-virtuales-para-desarrollo">Máquinas Virtuales para Desarrollo</a>
+      <ul>
+        <li><a href="#-por-qué-usar-máquinas-virtuales">🎯 ¿Por qué usar máquinas virtuales?</a></li>
+        <li><a href="#-multipass-virtualización-ubuntu-simplificada">💻 Multipass: Virtualización Ubuntu Simplificada</a>
+          <ul>
+            <li><a href="#características-principales-de-multipass">Características principales de Multipass</a></li>
+          </ul>
+        </li>
+        <li><a href="#-guías-disponibles">📚 Guías disponibles</a>
+          <ul>
+            <li><a href="#multipass-básico"><a href="multipass/">Multipass Básico</a></a></li>
+            <li><a href="#multipass-en-windows-home"><a href="multipass-windows/">Multipass en Windows Home</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-comunes">🛠️ Casos de uso comunes</a>
+          <ul>
+            <li><a href="#desarrollo-de-aplicaciones">Desarrollo de aplicaciones</a></li>
+            <li><a href="#testing-y-cicd">Testing y CI/CD</a></li>
+            <li><a href="#aprendizaje-y-experimentación">Aprendizaje y experimentación</a></li>
+          </ul>
+        </li>
+        <li><a href="#-herramientas-complementarias">🔧 Herramientas complementarias</a>
+          <ul>
+            <li><a href="#cloud-init">Cloud-init</a></li>
+            <li><a href="#snapshots">Snapshots</a></li>
+            <li><a href="#montaje-de-directorios">Montaje de directorios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comparación-con-otras-soluciones">📊 Comparación con otras soluciones</a></li>
+        <li><a href="#-ventajas-de-usar-multipass">🎉 Ventajas de usar Multipass</a>
+          <ul>
+            <li><a href="#para-desarrolladores">Para desarrolladores</a></li>
+            <li><a href="#para-equipos">Para equipos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">🔗 Recursos adicionales</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="máquinas-virtuales-para-desarrollo">
+  Máquinas Virtuales para Desarrollo
+  <a class="anchor" href="#m%c3%a1quinas-virtuales-para-desarrollo">#</a>
+</h1>
+<p>Las máquinas virtuales son una herramienta fundamental para el desarrollo moderno, permitiendo crear entornos aislados, reproducibles y consistentes para diferentes proyectos y tecnologías.</p>
+<h2 id="-por-qué-usar-máquinas-virtuales">
+  🎯 ¿Por qué usar máquinas virtuales?
+  <a class="anchor" href="#-por-qu%c3%a9-usar-m%c3%a1quinas-virtuales">#</a>
+</h2>
+<p>Las máquinas virtuales ofrecen múltiples ventajas para desarrolladores y equipos DevOps:</p>
+<ul>
+<li><strong>Aislamiento completo</strong> - Cada proyecto en su propio entorno</li>
+<li><strong>Reproducibilidad</strong> - Misma configuración en todos los equipos</li>
+<li><strong>Experimentación segura</strong> - Prueba sin afectar tu sistema principal</li>
+<li><strong>Múltiples SO</strong> - Ejecuta diferentes sistemas operativos simultáneamente</li>
+<li><strong>Snapshots</strong> - Guarda estados específicos para rollback rápido</li>
+</ul>
+<h2 id="-multipass-virtualización-ubuntu-simplificada">
+  💻 Multipass: Virtualización Ubuntu Simplificada
+  <a class="anchor" href="#-multipass-virtualizaci%c3%b3n-ubuntu-simplificada">#</a>
+</h2>
+<p><strong>Multipass</strong> es una herramienta desarrollada por Canonical que simplifica la creación y gestión de máquinas virtuales Ubuntu. Es perfecta para:</p>
+<ul>
+<li><strong>Desarrollo local</strong> con Ubuntu</li>
+<li><strong>Testing de aplicaciones</strong> en entornos limpios</li>
+<li><strong>Prototipado rápido</strong> de infraestructura</li>
+<li><strong>Aprendizaje</strong> de tecnologías Linux</li>
+</ul>
+<h3 id="características-principales-de-multipass">
+  Características principales de Multipass
+  <a class="anchor" href="#caracter%c3%adsticas-principales-de-multipass">#</a>
+</h3>
+<ul>
+<li>✅ <strong>Instalación simple</strong> - Un comando y listo</li>
+<li>✅ <strong>Gestión fácil</strong> - CLI intuitiva y potente</li>
+<li>✅ <strong>Cloud-init</strong> - Configuración automática de VMs</li>
+<li>✅ <strong>Múltiples backends</strong> - VirtualBox, Hyper-V, KVM</li>
+<li>✅ <strong>Snapshots</strong> - Guarda y restaura estados</li>
+<li>✅ <strong>Compartir archivos</strong> - Monta directorios del host</li>
+</ul>
+<h2 id="-guías-disponibles">
+  📚 Guías disponibles
+  <a class="anchor" href="#-gu%c3%adas-disponibles">#</a>
+</h2>
+<h3 id="multipass-básico">
+  
+  <a href="/docs/maquinas-virtuales/multipass/">Multipass Básico</a>
+  <a class="anchor" href="#multipass-b%c3%a1sico">#</a>
+</h3>
+<p>Introducción completa a Multipass con ejemplos prácticos:</p>
+<ul>
+<li>Instalación y configuración inicial</li>
+<li>Creación y gestión de VMs</li>
+<li>Configuración con cloud-init</li>
+<li>Comandos esenciales</li>
+<li>Mejores prácticas</li>
+</ul>
+<h3 id="multipass-en-windows-home">
+  
+  <a href="/docs/maquinas-virtuales/multipass-windows/">Multipass en Windows Home</a>
+  <a class="anchor" href="#multipass-en-windows-home">#</a>
+</h3>
+<p>Guía específica para usar Multipass en Windows Home con VirtualBox:</p>
+<ul>
+<li>Instalación de requisitos previos</li>
+<li>Configuración de VirtualBox como backend</li>
+<li>Solución de problemas comunes</li>
+<li>Verificación de la instalación</li>
+</ul>
+<h2 id="-casos-de-uso-comunes">
+  🛠️ Casos de uso comunes
+  <a class="anchor" href="#-casos-de-uso-comunes">#</a>
+</h2>
+<h3 id="desarrollo-de-aplicaciones">
+  Desarrollo de aplicaciones
+  <a class="anchor" href="#desarrollo-de-aplicaciones">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Crear VM para desarrollo web</span>
+</span></span><span style="display:flex;"><span>multipass launch --name dev-web --cpus <span style="color:#ae81ff">2</span> --mem 4G --disk 20G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Instalar stack completo con cloud-init</span>
+</span></span><span style="display:flex;"><span>multipass launch --name fullstack --cloud-init cloud-init.yaml
+</span></span></code></pre></div><h3 id="testing-y-cicd">
+  Testing y CI/CD
+  <a class="anchor" href="#testing-y-cicd">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># VM temporal para testing</span>
+</span></span><span style="display:flex;"><span>multipass launch --name test-env
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ejecutar tests y eliminar</span>
+</span></span><span style="display:flex;"><span>multipass exec test-env -- ./run-tests.sh
+</span></span><span style="display:flex;"><span>multipass delete test-env <span style="color:#f92672">&amp;&amp;</span> multipass purge
+</span></span></code></pre></div><h3 id="aprendizaje-y-experimentación">
+  Aprendizaje y experimentación
+  <a class="anchor" href="#aprendizaje-y-experimentaci%c3%b3n">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># VM para aprender Kubernetes</span>
+</span></span><span style="display:flex;"><span>multipass launch --name k8s-lab --cpus <span style="color:#ae81ff">4</span> --mem 8G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># VM para experimentar con Docker</span>
+</span></span><span style="display:flex;"><span>multipass launch --name docker-lab --cloud-init docker-setup.yaml
+</span></span></code></pre></div><h2 id="-herramientas-complementarias">
+  🔧 Herramientas complementarias
+  <a class="anchor" href="#-herramientas-complementarias">#</a>
+</h2>
+<h3 id="cloud-init">
+  Cloud-init
+  <a class="anchor" href="#cloud-init">#</a>
+</h3>
+<p>Automatiza la configuración inicial de las VMs:</p>
+<ul>
+<li>Instalación de paquetes</li>
+<li>Configuración de usuarios</li>
+<li>Setup de servicios</li>
+<li>Clonado de repositorios</li>
+</ul>
+<h3 id="snapshots">
+  Snapshots
+  <a class="anchor" href="#snapshots">#</a>
+</h3>
+<p>Guarda estados específicos de las VMs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Crear snapshot</span>
+</span></span><span style="display:flex;"><span>multipass snapshot create vm-name snapshot-name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Restaurar snapshot</span>
+</span></span><span style="display:flex;"><span>multipass snapshot restore vm-name snapshot-name
+</span></span></code></pre></div><h3 id="montaje-de-directorios">
+  Montaje de directorios
+  <a class="anchor" href="#montaje-de-directorios">#</a>
+</h3>
+<p>Comparte archivos entre host y VM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Montar directorio del host en la VM</span>
+</span></span><span style="display:flex;"><span>multipass mount /host/path vm-name:/vm/path
+</span></span></code></pre></div><h2 id="-comparación-con-otras-soluciones">
+  📊 Comparación con otras soluciones
+  <a class="anchor" href="#-comparaci%c3%b3n-con-otras-soluciones">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Característica</th>
+          <th>Multipass</th>
+          <th>VirtualBox</th>
+          <th>VMware</th>
+          <th>Docker</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Facilidad de uso</strong></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+          <td><strong>Recursos</strong></td>
+          <td>Ligero</td>
+          <td>Medio</td>
+          <td>Pesado</td>
+          <td>Muy ligero</td>
+      </tr>
+      <tr>
+          <td><strong>SO soportados</strong></td>
+          <td>Ubuntu</td>
+          <td>Todos</td>
+          <td>Todos</td>
+          <td>Linux containers</td>
+      </tr>
+      <tr>
+          <td><strong>Automatización</strong></td>
+          <td>Excelente</td>
+          <td>Buena</td>
+          <td>Buena</td>
+          <td>Excelente</td>
+      </tr>
+      <tr>
+          <td><strong>Costo</strong></td>
+          <td>Gratuito</td>
+          <td>Gratuito</td>
+          <td>Pago</td>
+          <td>Gratuito</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-ventajas-de-usar-multipass">
+  🎉 Ventajas de usar Multipass
+  <a class="anchor" href="#-ventajas-de-usar-multipass">#</a>
+</h2>
+<h3 id="para-desarrolladores">
+  Para desarrolladores
+  <a class="anchor" href="#para-desarrolladores">#</a>
+</h3>
+<ul>
+<li>🚀 <strong>Setup rápido</strong> - VM lista en minutos</li>
+<li>🔄 <strong>Entornos limpios</strong> - Siempre empezar desde cero</li>
+<li>💾 <strong>Bajo consumo</strong> - Optimizado para Ubuntu</li>
+<li>🛠️ <strong>Integración CLI</strong> - Automatizable y scripteable</li>
+</ul>
+<h3 id="para-equipos">
+  Para equipos
+  <a class="anchor" href="#para-equipos">#</a>
+</h3>
+<ul>
+<li>📋 <strong>Estandarización</strong> - Mismos entornos para todos</li>
+<li>🔧 <strong>Configuración como código</strong> - Cloud-init versionado</li>
+<li>🧪 <strong>Testing consistente</strong> - Mismas condiciones siempre</li>
+<li>📈 <strong>Escalabilidad</strong> - Múltiples VMs fácilmente</li>
+</ul>
+<h2 id="-recursos-adicionales">
+  🔗 Recursos adicionales
+  <a class="anchor" href="#-recursos-adicionales">#</a>
+</h2>
+<ul>
+<li>
+  <a href="https://multipass.run/docs">Documentación oficial de Multipass</a></li>
+<li>
+  <a href="https://cloud-init.io/">Cloud-init documentation</a></li>
+<li>
+  <a href="https://cloud-images.ubuntu.com/">Ubuntu Cloud Images</a></li>
+<li>
+  <a href="https://github.com/canonical/multipass">Multipass GitHub</a></li>
+</ul>
+<hr>
+<p>¡Comienza a usar máquinas virtuales para mejorar tu flujo de desarrollo y crear entornos más robustos y reproducibles!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/maquinas-virtuales/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#máquinas-virtuales-para-desarrollo">Máquinas Virtuales para Desarrollo</a>
+      <ul>
+        <li><a href="#-por-qué-usar-máquinas-virtuales">🎯 ¿Por qué usar máquinas virtuales?</a></li>
+        <li><a href="#-multipass-virtualización-ubuntu-simplificada">💻 Multipass: Virtualización Ubuntu Simplificada</a>
+          <ul>
+            <li><a href="#características-principales-de-multipass">Características principales de Multipass</a></li>
+          </ul>
+        </li>
+        <li><a href="#-guías-disponibles">📚 Guías disponibles</a>
+          <ul>
+            <li><a href="#multipass-básico"><a href="multipass/">Multipass Básico</a></a></li>
+            <li><a href="#multipass-en-windows-home"><a href="multipass-windows/">Multipass en Windows Home</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-comunes">🛠️ Casos de uso comunes</a>
+          <ul>
+            <li><a href="#desarrollo-de-aplicaciones">Desarrollo de aplicaciones</a></li>
+            <li><a href="#testing-y-cicd">Testing y CI/CD</a></li>
+            <li><a href="#aprendizaje-y-experimentación">Aprendizaje y experimentación</a></li>
+          </ul>
+        </li>
+        <li><a href="#-herramientas-complementarias">🔧 Herramientas complementarias</a>
+          <ul>
+            <li><a href="#cloud-init">Cloud-init</a></li>
+            <li><a href="#snapshots">Snapshots</a></li>
+            <li><a href="#montaje-de-directorios">Montaje de directorios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comparación-con-otras-soluciones">📊 Comparación con otras soluciones</a></li>
+        <li><a href="#-ventajas-de-usar-multipass">🎉 Ventajas de usar Multipass</a>
+          <ul>
+            <li><a href="#para-desarrolladores">Para desarrolladores</a></li>
+            <li><a href="#para-equipos">Para equipos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">🔗 Recursos adicionales</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

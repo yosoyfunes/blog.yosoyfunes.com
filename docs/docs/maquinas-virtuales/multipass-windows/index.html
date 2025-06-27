@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Pasos para usar Multipass en Windows Home con VirtualBox
+  #
+
+Windows Home no incluye Hyper-V, por lo que necesitamos usar VirtualBox como backend para Multipass. Esta guía te llevará paso a paso para configurar todo correctamente.
+
+  1️⃣ Instalar los requisitos previos
+  #
+
+
+  🔹 Instalar VirtualBox
+  #
+
+Si no lo tienes instalado:
+
+Descarga VirtualBox desde: 
+  https://www.virtualbox.org/wiki/Downloads
+Instálalo con la configuración por defecto.
+Reinicia tu PC tras la instalación.
+
+
+  🔹 Instalar Multipass
+  #
+
+
+Descarga Multipass desde: 
+  https://multipass.run/download
+Durante la instalación, elige VirtualBox como backend si te lo solicita.
+Completa la instalación y reinicia el sistema.
+
+
+
+  2️⃣ Verificar la instalación
+  #
+
+Abre PowerShell y ejecuta:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/maquinas-virtuales/multipass-windows/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Multipass en Windows Home con VirtualBox">
+  <meta property="og:description" content="Pasos para usar Multipass en Windows Home con VirtualBox # Windows Home no incluye Hyper-V, por lo que necesitamos usar VirtualBox como backend para Multipass. Esta guía te llevará paso a paso para configurar todo correctamente.
+1️⃣ Instalar los requisitos previos # 🔹 Instalar VirtualBox # Si no lo tienes instalado:
+Descarga VirtualBox desde: https://www.virtualbox.org/wiki/Downloads Instálalo con la configuración por defecto. Reinicia tu PC tras la instalación. 🔹 Instalar Multipass # Descarga Multipass desde: https://multipass.run/download Durante la instalación, elige VirtualBox como backend si te lo solicita. Completa la instalación y reinicia el sistema. 2️⃣ Verificar la instalación # Abre PowerShell y ejecuta:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Multipass en Windows Home con VirtualBox | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/maquinas-virtuales/multipass-windows/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.3d9e23fd48f1aef047ac01bc91c868c651ed167b134675441e7487b289bbd3c0.js" integrity="sha256-PZ4j/UjxrvBHrAG8kchoxlHtFnsTRnVEHnSHsom708A=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/" class="">Máquinas Virtuales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass/" class="">Multipass - Guía Completa</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/maquinas-virtuales/multipass-windows/" class="active">Multipass en Windows Home con VirtualBox</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Multipass en Windows Home con VirtualBox</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pasos-para-usar-multipass-en-windows-home-con-virtualbox">Pasos para usar Multipass en Windows Home con VirtualBox</a>
+      <ul>
+        <li><a href="#1-instalar-los-requisitos-previos">1️⃣ Instalar los requisitos previos</a>
+          <ul>
+            <li><a href="#-instalar-virtualbox">🔹 <strong>Instalar VirtualBox</strong></a></li>
+            <li><a href="#-instalar-multipass">🔹 <strong>Instalar Multipass</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#2-verificar-la-instalación">2️⃣ Verificar la instalación</a></li>
+        <li><a href="#3-configurar-multipass-para-usar-virtualbox">3️⃣ Configurar Multipass para usar VirtualBox</a>
+          <ul>
+            <li><a href="#-solución-de-problemas">⚠️ <strong>Solución de problemas</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#4-crear-una-máquina-virtual">4️⃣ Crear una máquina virtual</a></li>
+        <li><a href="#5-administrar-máquinas-virtuales">5️⃣ Administrar máquinas virtuales</a></li>
+        <li><a href="#-comandos-útiles-adicionales">🔧 Comandos útiles adicionales</a>
+          <ul>
+            <li><a href="#información-de-la-vm">Información de la VM</a></li>
+            <li><a href="#ejecutar-comandos-remotos">Ejecutar comandos remotos</a></li>
+            <li><a href="#transferir-archivos">Transferir archivos</a></li>
+            <li><a href="#montar-directorios">Montar directorios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-práctico-vm-para-desarrollo">🎯 Ejemplo práctico: VM para desarrollo</a>
+          <ul>
+            <li><a href="#crear-vm-con-configuración-específica">Crear VM con configuración específica</a></li>
+            <li><a href="#configurar-la-vm-para-desarrollo">Configurar la VM para desarrollo</a></li>
+            <li><a href="#usar-la-vm">Usar la VM</a></li>
+          </ul>
+        </li>
+        <li><a href="#-solución-de-problemas-comunes">🚨 Solución de problemas comunes</a>
+          <ul>
+            <li><a href="#error-multipass-launch-failed">Error: &ldquo;multipass launch failed&rdquo;</a></li>
+            <li><a href="#error-unable-to-start-vm">Error: &ldquo;Unable to start VM&rdquo;</a></li>
+            <li><a href="#vm-no-obtiene-ip">VM no obtiene IP</a></li>
+          </ul>
+        </li>
+        <li><a href="#-video-de-ejemplo">📹 Video de ejemplo</a></li>
+        <li><a href="#-listo">🎉 ¡Listo!</a>
+          <ul>
+            <li><a href="#próximos-pasos-recomendados">Próximos pasos recomendados:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="pasos-para-usar-multipass-en-windows-home-con-virtualbox">
+  Pasos para usar Multipass en Windows Home con VirtualBox
+  <a class="anchor" href="#pasos-para-usar-multipass-en-windows-home-con-virtualbox">#</a>
+</h1>
+<p>Windows Home no incluye Hyper-V, por lo que necesitamos usar VirtualBox como backend para Multipass. Esta guía te llevará paso a paso para configurar todo correctamente.</p>
+<h2 id="1-instalar-los-requisitos-previos">
+  1️⃣ Instalar los requisitos previos
+  <a class="anchor" href="#1-instalar-los-requisitos-previos">#</a>
+</h2>
+<h3 id="-instalar-virtualbox">
+  🔹 <strong>Instalar VirtualBox</strong>
+  <a class="anchor" href="#-instalar-virtualbox">#</a>
+</h3>
+<p>Si no lo tienes instalado:</p>
+<ol>
+<li>Descarga VirtualBox desde: 
+  <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Instálalo con la configuración por defecto.</li>
+<li><strong>Reinicia tu PC</strong> tras la instalación.</li>
+</ol>
+<h3 id="-instalar-multipass">
+  🔹 <strong>Instalar Multipass</strong>
+  <a class="anchor" href="#-instalar-multipass">#</a>
+</h3>
+<ol>
+<li>Descarga Multipass desde: 
+  <a href="https://multipass.run/download">https://multipass.run/download</a></li>
+<li>Durante la instalación, elige <strong>VirtualBox</strong> como backend si te lo solicita.</li>
+<li>Completa la instalación y reinicia el sistema.</li>
+</ol>
+<hr>
+<h2 id="2-verificar-la-instalación">
+  2️⃣ Verificar la instalación
+  <a class="anchor" href="#2-verificar-la-instalaci%c3%b3n">#</a>
+</h2>
+<p>Abre <strong>PowerShell</strong> y ejecuta:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass version
+</span></span></code></pre></div><p>Debe mostrar la versión de Multipass instalada.</p>
+<p>Para asegurarte de que está usando VirtualBox, ejecuta:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass get local.driver
+</span></span></code></pre></div><p>Si devuelve <code>hyperv</code>, debes cambiarlo manualmente.</p>
+<hr>
+<h2 id="3-configurar-multipass-para-usar-virtualbox">
+  3️⃣ Configurar Multipass para usar VirtualBox
+  <a class="anchor" href="#3-configurar-multipass-para-usar-virtualbox">#</a>
+</h2>
+<p>Si Multipass está intentando usar <strong>Hyper-V</strong>, configúralo para usar <strong>VirtualBox</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass set local.driver=virtualbox
+</span></span></code></pre></div><p>Verifica que el cambio se aplicó:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass get local.driver
+</span></span></code></pre></div><p>Debe devolver: <code>virtualbox</code></p>
+<h3 id="-solución-de-problemas">
+  ⚠️ <strong>Solución de problemas</strong>
+  <a class="anchor" href="#-soluci%c3%b3n-de-problemas">#</a>
+</h3>
+<p>Si el problema persiste, chequear la documentación seteando SO Windows.</p>
+<p><strong>Chequear si <code>multipass</code> está corriendo</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Service -Name multipass
+</span></span></code></pre></div><p>Salida esperada:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Status   Name               DisplayName
+</span></span><span style="display:flex;"><span>------   ----               -----------
+</span></span><span style="display:flex;"><span>Running  multipass          Multipass Service
+</span></span></code></pre></div><p><strong>Iniciar servicio de <code>multipass</code> si no está corriendo</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Start-Service -Name multipass
+</span></span></code></pre></div><hr>
+<h2 id="4-crear-una-máquina-virtual">
+  4️⃣ Crear una máquina virtual
+  <a class="anchor" href="#4-crear-una-m%c3%a1quina-virtual">#</a>
+</h2>
+<p>Para crear una VM Ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass launch --name ubuntu-vm
+</span></span></code></pre></div><p>Si deseas asignar más recursos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass launch --name ubuntu-vm --cpus <span style="color:#ae81ff">2</span> --mem 2G --disk 10G
+</span></span></code></pre></div><hr>
+<h2 id="5-administrar-máquinas-virtuales">
+  5️⃣ Administrar máquinas virtuales
+  <a class="anchor" href="#5-administrar-m%c3%a1quinas-virtuales">#</a>
+</h2>
+<p>📌 <strong>Listar VMs activas</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass list
+</span></span></code></pre></div><p>📌 <strong>Acceder a la VM</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass shell ubuntu-vm
+</span></span></code></pre></div><p>📌 <strong>Detener la VM</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass stop ubuntu-vm
+</span></span></code></pre></div><p>📌 <strong>Eliminar una VM</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass delete ubuntu-vm
+</span></span><span style="display:flex;"><span>multipass purge
+</span></span></code></pre></div><h2 id="-comandos-útiles-adicionales">
+  🔧 Comandos útiles adicionales
+  <a class="anchor" href="#-comandos-%c3%batiles-adicionales">#</a>
+</h2>
+<h3 id="información-de-la-vm">
+  Información de la VM
+  <a class="anchor" href="#informaci%c3%b3n-de-la-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass info ubuntu-vm
+</span></span></code></pre></div><h3 id="ejecutar-comandos-remotos">
+  Ejecutar comandos remotos
+  <a class="anchor" href="#ejecutar-comandos-remotos">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass exec ubuntu-vm -- ls -la
+</span></span><span style="display:flex;"><span>multipass exec ubuntu-vm -- sudo apt update
+</span></span></code></pre></div><h3 id="transferir-archivos">
+  Transferir archivos
+  <a class="anchor" href="#transferir-archivos">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Copiar archivo a la VM</span>
+</span></span><span style="display:flex;"><span>multipass transfer archivo.txt ubuntu-vm<span style="color:#960050;background-color:#1e0010">:</span>~/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copiar archivo desde la VM</span>
+</span></span><span style="display:flex;"><span>multipass transfer ubuntu-vm<span style="color:#960050;background-color:#1e0010">:</span>~/archivo.txt ./
+</span></span></code></pre></div><h3 id="montar-directorios">
+  Montar directorios
+  <a class="anchor" href="#montar-directorios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Montar carpeta de Windows en la VM</span>
+</span></span><span style="display:flex;"><span>multipass mount C:\Users\TuUsuario\Documentos ubuntu-vm<span style="color:#960050;background-color:#1e0010">:</span>~/documentos
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Desmontar</span>
+</span></span><span style="display:flex;"><span>multipass umount ubuntu-vm<span style="color:#960050;background-color:#1e0010">:</span>~/documentos
+</span></span></code></pre></div><h2 id="-ejemplo-práctico-vm-para-desarrollo">
+  🎯 Ejemplo práctico: VM para desarrollo
+  <a class="anchor" href="#-ejemplo-pr%c3%a1ctico-vm-para-desarrollo">#</a>
+</h2>
+<h3 id="crear-vm-con-configuración-específica">
+  Crear VM con configuración específica
+  <a class="anchor" href="#crear-vm-con-configuraci%c3%b3n-espec%c3%adfica">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass launch --name dev-env --cpus <span style="color:#ae81ff">4</span> --mem 4G --disk 20G
+</span></span></code></pre></div><h3 id="configurar-la-vm-para-desarrollo">
+  Configurar la VM para desarrollo
+  <a class="anchor" href="#configurar-la-vm-para-desarrollo">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Acceder a la VM</span>
+</span></span><span style="display:flex;"><span>multipass shell dev-env
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Dentro de la VM, instalar herramientas</span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install -y git nodejs npm python3 python3-pip docker.io
+</span></span><span style="display:flex;"><span>sudo usermod -aG docker $USER
+</span></span></code></pre></div><h3 id="usar-la-vm">
+  Usar la VM
+  <a class="anchor" href="#usar-la-vm">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Montar tu directorio de proyectos</span>
+</span></span><span style="display:flex;"><span>multipass mount C:\Users\TuUsuario\Proyectos dev-env<span style="color:#960050;background-color:#1e0010">:</span>~/proyectos
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Acceder y trabajar</span>
+</span></span><span style="display:flex;"><span>multipass shell dev-env
+</span></span><span style="display:flex;"><span>cd ~/proyectos
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ... trabajar normalmente</span>
+</span></span></code></pre></div><h2 id="-solución-de-problemas-comunes">
+  🚨 Solución de problemas comunes
+  <a class="anchor" href="#-soluci%c3%b3n-de-problemas-comunes">#</a>
+</h2>
+<h3 id="error-multipass-launch-failed">
+  Error: &ldquo;multipass launch failed&rdquo;
+  <a class="anchor" href="#error-multipass-launch-failed">#</a>
+</h3>
+<ol>
+<li>Verifica que VirtualBox esté instalado y funcionando</li>
+<li>Asegúrate de que el servicio de Multipass esté corriendo:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Service -Name multipass
+</span></span><span style="display:flex;"><span>Start-Service -Name multipass
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="error-unable-to-start-vm">
+  Error: &ldquo;Unable to start VM&rdquo;
+  <a class="anchor" href="#error-unable-to-start-vm">#</a>
+</h3>
+<ol>
+<li>Verifica que la virtualización esté habilitada en BIOS/UEFI</li>
+<li>Cierra VirtualBox si está abierto</li>
+<li>Reinicia el servicio de Multipass:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Restart-Service -Name multipass
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="vm-no-obtiene-ip">
+  VM no obtiene IP
+  <a class="anchor" href="#vm-no-obtiene-ip">#</a>
+</h3>
+<ol>
+<li>Verifica la configuración de red en VirtualBox</li>
+<li>Reinicia la VM:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>multipass restart ubuntu-vm
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="-video-de-ejemplo">
+  📹 Video de ejemplo
+  <a class="anchor" href="#-video-de-ejemplo">#</a>
+</h2>
+<p>Para ver un ejemplo práctico en video: 
+  <a href="https://youtu.be/BnH1OdIvN1c?si=rRU9LiRDjbyTmM1o">https://youtu.be/BnH1OdIvN1c</a></p>
+<h2 id="-listo">
+  🎉 ¡Listo!
+  <a class="anchor" href="#-listo">#</a>
+</h2>
+<p>Ahora tienes Multipass funcionando en Windows Home con VirtualBox. Puedes crear máquinas virtuales Ubuntu fácilmente para desarrollo, testing o experimentación.</p>
+<h3 id="próximos-pasos-recomendados">
+  Próximos pasos recomendados:
+  <a class="anchor" href="#pr%c3%b3ximos-pasos-recomendados">#</a>
+</h3>
+<ol>
+<li>Experimenta creando diferentes VMs para diferentes proyectos</li>
+<li>Aprende a usar cloud-init para automatizar la configuración</li>
+<li>Explora los snapshots para guardar estados específicos</li>
+<li>Configura montajes de directorios para un flujo de trabajo eficiente</li>
+</ol>
+<p>¡Disfruta desarrollando con entornos Ubuntu limpios y aislados!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/maquinas-virtuales/multipass-windows.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pasos-para-usar-multipass-en-windows-home-con-virtualbox">Pasos para usar Multipass en Windows Home con VirtualBox</a>
+      <ul>
+        <li><a href="#1-instalar-los-requisitos-previos">1️⃣ Instalar los requisitos previos</a>
+          <ul>
+            <li><a href="#-instalar-virtualbox">🔹 <strong>Instalar VirtualBox</strong></a></li>
+            <li><a href="#-instalar-multipass">🔹 <strong>Instalar Multipass</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#2-verificar-la-instalación">2️⃣ Verificar la instalación</a></li>
+        <li><a href="#3-configurar-multipass-para-usar-virtualbox">3️⃣ Configurar Multipass para usar VirtualBox</a>
+          <ul>
+            <li><a href="#-solución-de-problemas">⚠️ <strong>Solución de problemas</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#4-crear-una-máquina-virtual">4️⃣ Crear una máquina virtual</a></li>
+        <li><a href="#5-administrar-máquinas-virtuales">5️⃣ Administrar máquinas virtuales</a></li>
+        <li><a href="#-comandos-útiles-adicionales">🔧 Comandos útiles adicionales</a>
+          <ul>
+            <li><a href="#información-de-la-vm">Información de la VM</a></li>
+            <li><a href="#ejecutar-comandos-remotos">Ejecutar comandos remotos</a></li>
+            <li><a href="#transferir-archivos">Transferir archivos</a></li>
+            <li><a href="#montar-directorios">Montar directorios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-práctico-vm-para-desarrollo">🎯 Ejemplo práctico: VM para desarrollo</a>
+          <ul>
+            <li><a href="#crear-vm-con-configuración-específica">Crear VM con configuración específica</a></li>
+            <li><a href="#configurar-la-vm-para-desarrollo">Configurar la VM para desarrollo</a></li>
+            <li><a href="#usar-la-vm">Usar la VM</a></li>
+          </ul>
+        </li>
+        <li><a href="#-solución-de-problemas-comunes">🚨 Solución de problemas comunes</a>
+          <ul>
+            <li><a href="#error-multipass-launch-failed">Error: &ldquo;multipass launch failed&rdquo;</a></li>
+            <li><a href="#error-unable-to-start-vm">Error: &ldquo;Unable to start VM&rdquo;</a></li>
+            <li><a href="#vm-no-obtiene-ip">VM no obtiene IP</a></li>
+          </ul>
+        </li>
+        <li><a href="#-video-de-ejemplo">📹 Video de ejemplo</a></li>
+        <li><a href="#-listo">🎉 ¡Listo!</a>
+          <ul>
+            <li><a href="#próximos-pasos-recomendados">Próximos pasos recomendados:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,98 +3,111 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/docs/localstack/instalacion/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/maquinas-virtuales/multipass/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/profile/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/maquinas-virtuales/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/maquinas-virtuales/multipass-windows/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/terraform/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/cloudformation/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/localstack/ejemplos/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/aws/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/AWS/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/desarrollo/</loc>
-    <lastmod>2024-06-27T04:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/DevOps/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/guia/</loc>
-    <lastmod>2024-06-27T04:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/localstack/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-guia-completa/</loc>
-    <lastmod>2024-06-27T04:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/Tutoriales/</loc>
-    <lastmod>2024-06-27T04:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/docker/</loc>
-    <lastmod>2024-06-27T03:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ejemplos/</loc>
-    <lastmod>2024-06-27T03:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-ejemplos/</loc>
-    <lastmod>2024-06-27T03:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/cloudformation/</loc>
-    <lastmod>2024-06-27T02:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/iac/</loc>
-    <lastmod>2024-06-27T02:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/Infrastructure-as-Code/</loc>
-    <lastmod>2024-06-27T02:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-cloudformation/</loc>
-    <lastmod>2024-06-27T02:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/terraform/</loc>
-    <lastmod>2024-06-27T01:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-terraform/</loc>
-    <lastmod>2024-06-27T01:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:44:09-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-instalacion/</loc>
-    <lastmod>2024-06-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-05-18T22:03:03-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/cli/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/como-instalar-docker/</loc>
     <lastmod>2025-05-18T22:03:03-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/configuracion/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/localstack-profile/</loc>
-    <lastmod>2025-05-18T22:03:03-03:00</lastmod>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/</loc>
+    <lastmod>2025-06-26T23:22:38-03:00</lastmod>
   </url>
 </urlset>
