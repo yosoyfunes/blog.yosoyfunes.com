@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54755&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Usar Terraform con LocalStack para pruebas locales
+  #
+
+Una de las grandes ventajas de LocalStack es poder probar nuestros scripts de Terraform localmente antes de desplegarlos en AWS. Esto nos permite ahorrar costos y acelerar el desarrollo.
+
+  🎯 Configuración del provider AWS para LocalStack
+  #
+
+Para usar Terraform con LocalStack, necesitas configurar el provider AWS para que apunte a los endpoints locales:
+
+  Archivo main.tf
+  #
+
+provider &#34;aws&#34; {
+  region                      = &#34;us-east-1&#34;
+  access_key                  = &#34;mock_access_key&#34;
+  secret_key                  = &#34;mock_secret_key&#34;
+  s3_force_path_style         = true
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+  
+  endpoints {
+    s3       = &#34;http://localhost:4566&#34;
+    dynamodb = &#34;http://localhost:4566&#34;
+    lambda   = &#34;http://localhost:4566&#34;
+    iam      = &#34;http://localhost:4566&#34;
+    ec2      = &#34;http://localhost:4566&#34;
+    # Agrega más servicios según necesites
+  }
+}
+
+# Ejemplo: Crear un bucket S3
+resource &#34;aws_s3_bucket&#34; &#34;example&#34; {
+  bucket = &#34;my-tf-test-bucket&#34;
+  
+  tags = {
+    Name        = &#34;My bucket&#34;
+    Environment = &#34;Dev&#34;
+  }
+}
+
+# Ejemplo: Configurar versionado del bucket
+resource &#34;aws_s3_bucket_versioning&#34; &#34;example&#34; {
+  bucket = aws_s3_bucket.example.id
+  versioning_configuration {
+    status = &#34;Enabled&#34;
+  }
+}
+
+  🚀 Ejecutar Terraform
+  #
+
+
+  1. Inicializar Terraform
+  #
+
+terraform init
+
+  2. Planificar los cambios
+  #
+
+terraform plan -out=tfplan
+
+  3. Aplicar los cambios
+  #
+
+terraform apply &#34;tfplan&#34;
+
+  📦 Ejemplo avanzado: Backend con S3 y DynamoDB
+  #
+
+
+  Archivo provider.tf
+  #
+
+provider &#34;aws&#34; {
+  region = &#34;us-east-1&#34;
+
+  # Configuración para LocalStack
+  access_key                  = &#34;test&#34;
+  secret_key                  = &#34;test&#34;
+  s3_force_path_style         = true
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+
+  endpoints {
+    s3        = &#34;http://s3.localhost.localstack.cloud:4566&#34;
+    dynamodb  = &#34;http://localhost:4566&#34;
+    kms       = &#34;http://localhost:4566&#34;
+  }
+}
+
+  Archivo backend.tf
+  #
+
+module &#34;backend&#34; {
+  source = &#34;/terraform_modules/s3_dynamo_backend&#34;
+
+  ## Variables requeridas
+  bucket_name   = &#34;my_terraform_state_bucket_name&#34;
+  dynamodb_name = &#34;my_dynamodb_lock_state_table_name&#34;
+
+  ## Variables opcionales
+  ## Encriptación KMS o AES, por defecto es AES
+  use_kms_encryption = true
+
+  ## block_all_public_access - Por defecto está en false
+  block_all_public_access = true
+}
+
+  🔧 Configuración de backend remoto
+  #
+
+Una vez creado el backend, puedes configurar Terraform para usarlo:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:54755/docs/localstack/terraform/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Terraform con LocalStack">
+  <meta property="og:description" content="Usar Terraform con LocalStack para pruebas locales # Una de las grandes ventajas de LocalStack es poder probar nuestros scripts de Terraform localmente antes de desplegarlos en AWS. Esto nos permite ahorrar costos y acelerar el desarrollo.
+🎯 Configuración del provider AWS para LocalStack # Para usar Terraform con LocalStack, necesitas configurar el provider AWS para que apunte a los endpoints locales:
+Archivo main.tf # provider &#34;aws&#34; { region = &#34;us-east-1&#34; access_key = &#34;mock_access_key&#34; secret_key = &#34;mock_secret_key&#34; s3_force_path_style = true skip_credentials_validation = true skip_metadata_api_check = true skip_requesting_account_id = true endpoints { s3 = &#34;http://localhost:4566&#34; dynamodb = &#34;http://localhost:4566&#34; lambda = &#34;http://localhost:4566&#34; iam = &#34;http://localhost:4566&#34; ec2 = &#34;http://localhost:4566&#34; # Agrega más servicios según necesites } } # Ejemplo: Crear un bucket S3 resource &#34;aws_s3_bucket&#34; &#34;example&#34; { bucket = &#34;my-tf-test-bucket&#34; tags = { Name = &#34;My bucket&#34; Environment = &#34;Dev&#34; } } # Ejemplo: Configurar versionado del bucket resource &#34;aws_s3_bucket_versioning&#34; &#34;example&#34; { bucket = aws_s3_bucket.example.id versioning_configuration { status = &#34;Enabled&#34; } } 🚀 Ejecutar Terraform # 1. Inicializar Terraform # terraform init 2. Planificar los cambios # terraform plan -out=tfplan 3. Aplicar los cambios # terraform apply &#34;tfplan&#34; 📦 Ejemplo avanzado: Backend con S3 y DynamoDB # Archivo provider.tf # provider &#34;aws&#34; { region = &#34;us-east-1&#34; # Configuración para LocalStack access_key = &#34;test&#34; secret_key = &#34;test&#34; s3_force_path_style = true skip_credentials_validation = true skip_metadata_api_check = true skip_requesting_account_id = true endpoints { s3 = &#34;http://s3.localhost.localstack.cloud:4566&#34; dynamodb = &#34;http://localhost:4566&#34; kms = &#34;http://localhost:4566&#34; } } Archivo backend.tf # module &#34;backend&#34; { source = &#34;/terraform_modules/s3_dynamo_backend&#34; ## Variables requeridas bucket_name = &#34;my_terraform_state_bucket_name&#34; dynamodb_name = &#34;my_dynamodb_lock_state_table_name&#34; ## Variables opcionales ## Encriptación KMS o AES, por defecto es AES use_kms_encryption = true ## block_all_public_access - Por defecto está en false block_all_public_access = true } 🔧 Configuración de backend remoto # Una vez creado el backend, puedes configurar Terraform para usarlo:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Terraform con LocalStack | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:54755/docs/localstack/terraform/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.78b37f11bb81ed21b9d1258127076107d3aa994fa7954d25b416d2565478a2b3.js" integrity="sha256-eLN/EbuB7SG50SWBJwdhB9OqmU&#43;nlU0ltBbSVlR4orM=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="active">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Terraform con LocalStack</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#usar-terraform-con-localstack-para-pruebas-locales">Usar Terraform con LocalStack para pruebas locales</a>
+      <ul>
+        <li><a href="#-configuración-del-provider-aws-para-localstack">🎯 Configuración del provider AWS para LocalStack</a>
+          <ul>
+            <li><a href="#archivo-maintf">Archivo <code>main.tf</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejecutar-terraform">🚀 Ejecutar Terraform</a>
+          <ul>
+            <li><a href="#1-inicializar-terraform">1. Inicializar Terraform</a></li>
+            <li><a href="#2-planificar-los-cambios">2. Planificar los cambios</a></li>
+            <li><a href="#3-aplicar-los-cambios">3. Aplicar los cambios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-avanzado-backend-con-s3-y-dynamodb">📦 Ejemplo avanzado: Backend con S3 y DynamoDB</a>
+          <ul>
+            <li><a href="#archivo-providertf">Archivo <code>provider.tf</code></a></li>
+            <li><a href="#archivo-backendtf">Archivo <code>backend.tf</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-de-backend-remoto">🔧 Configuración de backend remoto</a></li>
+        <li><a href="#-verificar-recursos-creados">✅ Verificar recursos creados</a></li>
+        <li><a href="#-ventajas-de-usar-terraform-con-localstack">🎉 Ventajas de usar Terraform con LocalStack</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="usar-terraform-con-localstack-para-pruebas-locales">
+  Usar Terraform con LocalStack para pruebas locales
+  <a class="anchor" href="#usar-terraform-con-localstack-para-pruebas-locales">#</a>
+</h1>
+<p>Una de las grandes ventajas de LocalStack es poder probar nuestros scripts de Terraform localmente antes de desplegarlos en AWS. Esto nos permite ahorrar costos y acelerar el desarrollo.</p>
+<h2 id="-configuración-del-provider-aws-para-localstack">
+  🎯 Configuración del provider AWS para LocalStack
+  <a class="anchor" href="#-configuraci%c3%b3n-del-provider-aws-para-localstack">#</a>
+</h2>
+<p>Para usar Terraform con LocalStack, necesitas configurar el provider AWS para que apunte a los endpoints locales:</p>
+<h3 id="archivo-maintf">
+  Archivo <code>main.tf</code>
+  <a class="anchor" href="#archivo-maintf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;aws&#34;</span> {
+</span></span><span style="display:flex;"><span>  region                      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span>
+</span></span><span style="display:flex;"><span>  access_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mock_access_key&#34;</span>
+</span></span><span style="display:flex;"><span>  secret_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mock_secret_key&#34;</span>
+</span></span><span style="display:flex;"><span>  s3_force_path_style         <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_credentials_validation <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_metadata_api_check     <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_requesting_account_id  <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">endpoints</span> {
+</span></span><span style="display:flex;"><span>    s3       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    dynamodb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    lambda   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    iam      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    ec2      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    # Agrega más servicios según necesites
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Ejemplo: Crear un bucket S3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_s3_bucket&#34; &#34;example&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my-tf-test-bucket&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  tags <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    Name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My bucket&#34;</span>
+</span></span><span style="display:flex;"><span>    Environment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dev&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Ejemplo: Configurar versionado del bucket
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_s3_bucket_versioning&#34; &#34;example&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#f92672">=</span> <span style="color:#66d9ef">aws_s3_bucket</span>.<span style="color:#66d9ef">example</span>.<span style="color:#66d9ef">id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">versioning_configuration</span> {
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Enabled&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="-ejecutar-terraform">
+  🚀 Ejecutar Terraform
+  <a class="anchor" href="#-ejecutar-terraform">#</a>
+</h2>
+<h3 id="1-inicializar-terraform">
+  1. Inicializar Terraform
+  <a class="anchor" href="#1-inicializar-terraform">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform init
+</span></span></code></pre></div><h3 id="2-planificar-los-cambios">
+  2. Planificar los cambios
+  <a class="anchor" href="#2-planificar-los-cambios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform plan -out<span style="color:#f92672">=</span>tfplan
+</span></span></code></pre></div><h3 id="3-aplicar-los-cambios">
+  3. Aplicar los cambios
+  <a class="anchor" href="#3-aplicar-los-cambios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform apply <span style="color:#e6db74">&#34;tfplan&#34;</span>
+</span></span></code></pre></div><h2 id="-ejemplo-avanzado-backend-con-s3-y-dynamodb">
+  📦 Ejemplo avanzado: Backend con S3 y DynamoDB
+  <a class="anchor" href="#-ejemplo-avanzado-backend-con-s3-y-dynamodb">#</a>
+</h2>
+<h3 id="archivo-providertf">
+  Archivo <code>provider.tf</code>
+  <a class="anchor" href="#archivo-providertf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;aws&#34;</span> {
+</span></span><span style="display:flex;"><span>  region <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  # Configuración para LocalStack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  access_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>  secret_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>  s3_force_path_style         <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_credentials_validation <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_metadata_api_check     <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_requesting_account_id  <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">endpoints</span> {
+</span></span><span style="display:flex;"><span>    s3        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://s3.localhost.localstack.cloud:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    dynamodb  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    kms       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="archivo-backendtf">
+  Archivo <code>backend.tf</code>
+  <a class="anchor" href="#archivo-backendtf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;backend&#34;</span> {
+</span></span><span style="display:flex;"><span>  source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/terraform_modules/s3_dynamo_backend&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Variables requeridas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  bucket_name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_terraform_state_bucket_name&#34;</span>
+</span></span><span style="display:flex;"><span>  dynamodb_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_dynamodb_lock_state_table_name&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Variables opcionales
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Encriptación KMS o AES, por defecto es AES
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  use_kms_encryption <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## block_all_public_access - Por defecto está en false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  block_all_public_access <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="-configuración-de-backend-remoto">
+  🔧 Configuración de backend remoto
+  <a class="anchor" href="#-configuraci%c3%b3n-de-backend-remoto">#</a>
+</h2>
+<p>Una vez creado el backend, puedes configurar Terraform para usarlo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">terraform</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">backend</span> <span style="color:#e6db74">&#34;s3&#34;</span> {
+</span></span><span style="display:flex;"><span>    bucket         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_terraform_state_bucket_name&#34;</span>
+</span></span><span style="display:flex;"><span>    key            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;terraform.tfstate&#34;</span>
+</span></span><span style="display:flex;"><span>    region         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span>
+</span></span><span style="display:flex;"><span>    dynamodb_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_dynamodb_lock_state_table_name&#34;</span>
+</span></span><span style="display:flex;"><span>    encrypt        <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    # Configuración para LocalStack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    endpoint                    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    force_path_style           <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    skip_credentials_validation <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    skip_metadata_api_check     <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    skip_requesting_account_id  <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="-verificar-recursos-creados">
+  ✅ Verificar recursos creados
+  <a class="anchor" href="#-verificar-recursos-creados">#</a>
+</h2>
+<p>Puedes verificar que los recursos se crearon correctamente usando AWS CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Listar buckets S3</span>
+</span></span><span style="display:flex;"><span>aws --endpoint-url<span style="color:#f92672">=</span>http://localhost:4566 s3 ls
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Listar tablas DynamoDB</span>
+</span></span><span style="display:flex;"><span>aws --endpoint-url<span style="color:#f92672">=</span>http://localhost:4566 dynamodb list-tables
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Describir un bucket específico</span>
+</span></span><span style="display:flex;"><span>aws --endpoint-url<span style="color:#f92672">=</span>http://localhost:4566 s3api head-bucket --bucket my-tf-test-bucket
+</span></span></code></pre></div><h2 id="-ventajas-de-usar-terraform-con-localstack">
+  🎉 Ventajas de usar Terraform con LocalStack
+  <a class="anchor" href="#-ventajas-de-usar-terraform-con-localstack">#</a>
+</h2>
+<ul>
+<li><strong>Desarrollo rápido</strong>: Prueba cambios sin esperar deployments en AWS</li>
+<li><strong>Sin costos</strong>: No pagas por recursos de prueba</li>
+<li><strong>Debugging fácil</strong>: Logs locales y acceso directo a los servicios</li>
+<li><strong>CI/CD</strong>: Integra pruebas automatizadas en tu pipeline</li>
+</ul>
+<p>¡Ahora puedes desarrollar y probar tu infraestructura como código de forma local y eficiente!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/localstack/terraform.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#usar-terraform-con-localstack-para-pruebas-locales">Usar Terraform con LocalStack para pruebas locales</a>
+      <ul>
+        <li><a href="#-configuración-del-provider-aws-para-localstack">🎯 Configuración del provider AWS para LocalStack</a>
+          <ul>
+            <li><a href="#archivo-maintf">Archivo <code>main.tf</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejecutar-terraform">🚀 Ejecutar Terraform</a>
+          <ul>
+            <li><a href="#1-inicializar-terraform">1. Inicializar Terraform</a></li>
+            <li><a href="#2-planificar-los-cambios">2. Planificar los cambios</a></li>
+            <li><a href="#3-aplicar-los-cambios">3. Aplicar los cambios</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-avanzado-backend-con-s3-y-dynamodb">📦 Ejemplo avanzado: Backend con S3 y DynamoDB</a>
+          <ul>
+            <li><a href="#archivo-providertf">Archivo <code>provider.tf</code></a></li>
+            <li><a href="#archivo-backendtf">Archivo <code>backend.tf</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-configuración-de-backend-remoto">🔧 Configuración de backend remoto</a></li>
+        <li><a href="#-verificar-recursos-creados">✅ Verificar recursos creados</a></li>
+        <li><a href="#-ventajas-de-usar-terraform-con-localstack">🎉 Ventajas de usar Terraform con LocalStack</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

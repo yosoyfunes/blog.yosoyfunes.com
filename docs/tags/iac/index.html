@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54755&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:54755/tags/iac/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Iac">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+<title>Iac | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:54755/tags/iac/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.78b37f11bb81ed21b9d1258127076107d3aa994fa7954d25b416d2565478a2b3.js" integrity="sha256-eLN/EbuB7SG50SWBJwdhB9OqmU&#43;nlU0ltBbSVlR4orM=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:54755/tags/iac/index.xml" title="Blog de Matias - DevOps & Cloud" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Iac</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <span>Categories</span>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/AWS/">AWS</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/DevOps/">DevOps</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/Tutoriales/">Tutoriales</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/Infrastructure-as-Code/">Infrastructure as Code</a>
+          <span>2</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <span>Tags</span>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/aws/">Aws</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/desarrollo/">Desarrollo</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/guia/">Guia</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/localstack/">Localstack</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/docker/">Docker</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/ejemplos/">Ejemplos</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cloudformation/">Cloudformation</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/iac/">Iac</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/terraform/">Terraform</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cli/">Cli</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/configuracion/">Configuracion</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/localstack-cloudformation/">Usar CloudFormation con LocalStack localmente</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>June 27, 2024</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/DevOps/">DevOps</a>, 
+      <a href="/categories/Infrastructure-as-Code/">Infrastructure as Code</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/cloudformation/">Cloudformation</a>, 
+      <a href="/tags/localstack/">Localstack</a>, 
+      <a href="/tags/aws/">Aws</a>, 
+      <a href="/tags/iac/">Iac</a>
+  </div>
+  
+
+
+    <p><p>CloudFormation es el servicio nativo de AWS para Infrastructure as Code. Con LocalStack puedes probar tus templates de CloudFormation localmente antes de desplegarlos en AWS.</p>
+<h2 id="-ejemplo-básico-crear-un-bucket-s3">
+  📝 Ejemplo básico: Crear un bucket S3
+  <a class="anchor" href="#-ejemplo-b%c3%a1sico-crear-un-bucket-s3">#</a>
+</h2>
+<h3 id="archivo-s3yaml">
+  Archivo <code>s3.yaml</code>
+  <a class="anchor" href="#archivo-s3yaml">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Template básico para crear un bucket S3&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">MyS3Bucket</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::S3::Bucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BucketName</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-bucket&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Tags</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">Key</span>: <span style="color:#ae81ff">TestKey</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">Value</span>: <span style="color:#e6db74">&#34;my bucket 1&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">Key</span>: <span style="color:#ae81ff">Environment</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">Value</span>: <span style="color:#e6db74">&#34;Development&#34;</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">Key</span>: <span style="color:#ae81ff">CreatedBy</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">Value</span>: <span style="color:#e6db74">&#34;LocalStack&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">BucketName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Nombre del bucket S3 creado&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref MyS3Bucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-BucketName&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">BucketArn</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;ARN del bucket S3&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt MyS3Bucket.Arn</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-BucketArn&#34;</span>
+</span></span></code></pre></div><h2 id="-desplegar-el-stack">
+  🚀 Desplegar el stack
+  <a class="anchor" href="#-desplegar-el-stack">#</a>
+</h2>
+<h3 id="crear-el-stack">
+  Crear el stack
+  <a class="anchor" href="#crear-el-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation create-stack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --template-body file://s3.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h3 id="verificar-el-estado-del-stack">
+  Verificar el estado del stack
+  <a class="anchor" href="#verificar-el-estado-del-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h3 id="listar-recursos-del-stack">
+  Listar recursos del stack
+  <a class="anchor" href="#listar-recursos-del-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation list-stack-resources <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h2 id="-ejemplo-avanzado-stack-completo-con-múltiples-recursos">
+  📦 Ejemplo avanzado: Stack completo con múltiples recursos
+  <a class="anchor" href="#-ejemplo-avanzado-stack-completo-con-m%c3%baltiples-recursos">#</a>
+</h2>
+<h3 id="archivo-complete-stackyaml">
+  Archivo <code>complete-stack.yaml</code>
+  <a class="anchor" href="#archivo-complete-stackyaml">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Stack completo con S3, DynamoDB y Lambda&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Default</span>: <span style="color:#e6db74">&#34;dev&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AllowedValues</span>: [<span style="color:#e6db74">&#34;dev&#34;</span>, <span style="color:#e6db74">&#34;staging&#34;</span>, <span style="color:#e6db74">&#34;prod&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Ambiente de despliegue&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Bucket S3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">DataBucket</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::S3::Bucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BucketName</span>: !<span style="color:#ae81ff">Sub &#34;${Environment}-data-bucket-${AWS::AccountId}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">VersioningConfiguration</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Status</span>: <span style="color:#ae81ff">Enabled</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Tags</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">Key</span>: <span style="color:#ae81ff">Environment</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Environment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Tabla DynamoDB</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">UserTable</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::DynamoDB::Table</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">TableName</span>: !<span style="color:#ae81ff">Sub &#34;${Environment}-users&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BillingMode</span>: <span style="color:#ae81ff">PAY_PER_REQUEST</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">AttributeDefinitions</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">userId</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">AttributeType</span>: <span style="color:#ae81ff">S</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">KeySchema</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">userId</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">KeyType</span>: <span style="color:#ae81ff">HASH</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Tags</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">Key</span>: <span style="color:#ae81ff">Environment</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Environment</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Rol IAM para Lambda</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">LambdaExecutionRole</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::IAM::Role</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">AssumeRolePolicyDocument</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Version</span>: <span style="color:#e6db74">&#39;2012-10-17&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Statement</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">Effect</span>: <span style="color:#ae81ff">Allow</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">Principal</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">Service</span>: <span style="color:#ae81ff">lambda.amazonaws.com</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">Action</span>: <span style="color:#ae81ff">sts:AssumeRole</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ManagedPolicyArns</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Policies</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">PolicyName</span>: <span style="color:#ae81ff">DynamoDBAccess</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">PolicyDocument</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">Version</span>: <span style="color:#e6db74">&#39;2012-10-17&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">Statement</span>:
+</span></span><span style="display:flex;"><span>              - <span style="color:#f92672">Effect</span>: <span style="color:#ae81ff">Allow</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">Action</span>:
+</span></span><span style="display:flex;"><span>                  - <span style="color:#ae81ff">dynamodb:GetItem</span>
+</span></span><span style="display:flex;"><span>                  - <span style="color:#ae81ff">dynamodb:PutItem</span>
+</span></span><span style="display:flex;"><span>                  - <span style="color:#ae81ff">dynamodb:UpdateItem</span>
+</span></span><span style="display:flex;"><span>                  - <span style="color:#ae81ff">dynamodb:DeleteItem</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">Resource</span>: !<span style="color:#ae81ff">GetAtt UserTable.Arn</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Función Lambda</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ProcessorFunction</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::Lambda::Function</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">FunctionName</span>: !<span style="color:#ae81ff">Sub &#34;${Environment}-processor&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Runtime</span>: <span style="color:#ae81ff">python3.9</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Handler</span>: <span style="color:#ae81ff">index.handler</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Role</span>: !<span style="color:#ae81ff">GetAtt LambdaExecutionRole.Arn</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Code</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ZipFile</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          import json
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          import boto3
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          def handler(event, context):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              print(f&#34;Received event: {json.dumps(event)}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              return {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  &#39;statusCode&#39;: 200,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  &#39;body&#39;: json.dumps(&#39;Hello from LocalStack!&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Environment</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Variables</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">TABLE_NAME</span>: !<span style="color:#ae81ff">Ref UserTable</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">BUCKET_NAME</span>: !<span style="color:#ae81ff">Ref DataBucket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">BucketName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Nombre del bucket S3&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref DataBucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-BucketName&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">TableName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;Nombre de la tabla DynamoDB&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref UserTable</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-TableName&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">LambdaFunctionArn</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#e6db74">&#34;ARN de la función Lambda&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt ProcessorFunction.Arn</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-LambdaArn&#34;</span>
+</span></span></code></pre></div><h3 id="desplegar-el-stack-completo">
+  Desplegar el stack completo
+  <a class="anchor" href="#desplegar-el-stack-completo">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation create-stack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name complete-stack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --template-body file://complete-stack.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --parameters ParameterKey<span style="color:#f92672">=</span>Environment,ParameterValue<span style="color:#f92672">=</span>dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --capabilities CAPABILITY_IAM <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h2 id="-comandos-útiles-para-gestión-de-stacks">
+  🔍 Comandos útiles para gestión de stacks
+  <a class="anchor" href="#-comandos-%c3%batiles-para-gesti%c3%b3n-de-stacks">#</a>
+</h2>
+<h3 id="actualizar-un-stack">
+  Actualizar un stack
+  <a class="anchor" href="#actualizar-un-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation update-stack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --template-body file://s3.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h3 id="eliminar-un-stack">
+  Eliminar un stack
+  <a class="anchor" href="#eliminar-un-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation delete-stack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h3 id="obtener-outputs-del-stack">
+  Obtener outputs del stack
+  <a class="anchor" href="#obtener-outputs-del-stack">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --stack-name samplestack <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --query <span style="color:#e6db74">&#39;Stacks[0].Outputs&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h3 id="validar-template">
+  Validar template
+  <a class="anchor" href="#validar-template">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation validate-template <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --template-body file://s3.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --region us-east-1
+</span></span></code></pre></div><h2 id="-verificar-recursos-creados">
+  ✅ Verificar recursos creados
+  <a class="anchor" href="#-verificar-recursos-creados">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Verificar bucket S3</span>
+</span></span><span style="display:flex;"><span>aws s3 ls --endpoint-url http://localhost:4566
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verificar tabla DynamoDB</span>
+</span></span><span style="display:flex;"><span>aws dynamodb list-tables --endpoint-url http://localhost:4566
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verificar función Lambda</span>
+</span></span><span style="display:flex;"><span>aws lambda list-functions --endpoint-url http://localhost:4566
+</span></span></code></pre></div><h2 id="-ventajas-de-usar-cloudformation-con-localstack">
+  🎯 Ventajas de usar CloudFormation con LocalStack
+  <a class="anchor" href="#-ventajas-de-usar-cloudformation-con-localstack">#</a>
+</h2>
+<ul>
+<li><strong>Validación rápida</strong>: Prueba templates sin costos</li>
+<li><strong>Debugging local</strong>: Logs y errores accesibles localmente</li>
+<li><strong>Desarrollo iterativo</strong>: Cambios rápidos sin esperar deployments</li>
+<li><strong>Testing automatizado</strong>: Integra en pipelines de CI/CD</li>
+</ul>
+<p>¡Ahora puedes desarrollar y probar tus templates de CloudFormation de forma local y eficiente!</p></p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/localstack-terraform/">Usar Terraform con LocalStack para pruebas locales</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>June 27, 2024</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/DevOps/">DevOps</a>, 
+      <a href="/categories/Infrastructure-as-Code/">Infrastructure as Code</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/terraform/">Terraform</a>, 
+      <a href="/tags/localstack/">Localstack</a>, 
+      <a href="/tags/aws/">Aws</a>, 
+      <a href="/tags/iac/">Iac</a>
+  </div>
+  
+
+
+    <p><p>Una de las grandes ventajas de LocalStack es poder probar nuestros scripts de Terraform localmente antes de desplegarlos en AWS. Esto nos permite ahorrar costos y acelerar el desarrollo.</p>
+<h2 id="-configuración-del-provider-aws-para-localstack">
+  🎯 Configuración del provider AWS para LocalStack
+  <a class="anchor" href="#-configuraci%c3%b3n-del-provider-aws-para-localstack">#</a>
+</h2>
+<p>Para usar Terraform con LocalStack, necesitas configurar el provider AWS para que apunte a los endpoints locales:</p>
+<h3 id="archivo-maintf">
+  Archivo <code>main.tf</code>
+  <a class="anchor" href="#archivo-maintf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;aws&#34;</span> {
+</span></span><span style="display:flex;"><span>  region                      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span>
+</span></span><span style="display:flex;"><span>  access_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mock_access_key&#34;</span>
+</span></span><span style="display:flex;"><span>  secret_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mock_secret_key&#34;</span>
+</span></span><span style="display:flex;"><span>  s3_force_path_style         <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_credentials_validation <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_metadata_api_check     <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_requesting_account_id  <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">endpoints</span> {
+</span></span><span style="display:flex;"><span>    s3       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    dynamodb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    lambda   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    iam      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    ec2      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    # Agrega más servicios según necesites
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Ejemplo: Crear un bucket S3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_s3_bucket&#34; &#34;example&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my-tf-test-bucket&#34;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  tags <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    Name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My bucket&#34;</span>
+</span></span><span style="display:flex;"><span>    Environment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dev&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}<span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Ejemplo: Configurar versionado del bucket
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_s3_bucket_versioning&#34; &#34;example&#34;</span> {
+</span></span><span style="display:flex;"><span>  bucket <span style="color:#f92672">=</span> <span style="color:#66d9ef">aws_s3_bucket</span>.<span style="color:#66d9ef">example</span>.<span style="color:#66d9ef">id</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">versioning_configuration</span> {
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Enabled&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="-ejecutar-terraform">
+  🚀 Ejecutar Terraform
+  <a class="anchor" href="#-ejecutar-terraform">#</a>
+</h2>
+<h3 id="1-inicializar-terraform">
+  1. Inicializar Terraform
+  <a class="anchor" href="#1-inicializar-terraform">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform init
+</span></span></code></pre></div><h3 id="2-planificar-los-cambios">
+  2. Planificar los cambios
+  <a class="anchor" href="#2-planificar-los-cambios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform plan -out<span style="color:#f92672">=</span>tfplan
+</span></span></code></pre></div><h3 id="3-aplicar-los-cambios">
+  3. Aplicar los cambios
+  <a class="anchor" href="#3-aplicar-los-cambios">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>terraform apply <span style="color:#e6db74">&#34;tfplan&#34;</span>
+</span></span></code></pre></div><h2 id="-ejemplo-avanzado-backend-con-s3-y-dynamodb">
+  📦 Ejemplo avanzado: Backend con S3 y DynamoDB
+  <a class="anchor" href="#-ejemplo-avanzado-backend-con-s3-y-dynamodb">#</a>
+</h2>
+<h3 id="archivo-providertf">
+  Archivo <code>provider.tf</code>
+  <a class="anchor" href="#archivo-providertf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;aws&#34;</span> {
+</span></span><span style="display:flex;"><span>  region <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  # Configuración para LocalStack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  access_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>  secret_key                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>  s3_force_path_style         <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_credentials_validation <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_metadata_api_check     <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  skip_requesting_account_id  <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">endpoints</span> {
+</span></span><span style="display:flex;"><span>    s3        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://s3.localhost.localstack.cloud:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    dynamodb  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    kms       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="archivo-backendtf">
+  Archivo <code>backend.tf</code>
+  <a class="anchor" href="#archivo-backendtf">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-hcl" data-lang="hcl"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;backend&#34;</span> {
+</span></span><span style="display:flex;"><span>  source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/terraform_modules/s3_dynamo_backend&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Variables requeridas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  bucket_name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_terraform_state_bucket_name&#34;</span>
+</span></span><span style="display:flex;"><span>  dynamodb_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;my_dynamodb_lock_state_table_name&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Variables opcionales
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## Encriptación KMS o AES, por defecto es AES
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  use_kms_encryption <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ## block_all_public_access - Por defecto está en false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  block_all_public_access <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="-configuración-de-backend-remoto">
+  🔧 Configuración de backend remoto
+  <a class="anchor" href="#-configuraci%c3%b3n-de-backend-remoto">#</a>
+</h2>
+<p>Una vez creado el backend, puedes configurar Terraform para usarlo:</p></p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <span>Categories</span>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/AWS/">AWS</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/DevOps/">DevOps</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/Tutoriales/">Tutoriales</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/Infrastructure-as-Code/">Infrastructure as Code</a>
+          <span>2</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <span>Tags</span>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/aws/">Aws</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/desarrollo/">Desarrollo</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/guia/">Guia</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/localstack/">Localstack</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/docker/">Docker</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/ejemplos/">Ejemplos</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cloudformation/">Cloudformation</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/iac/">Iac</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/terraform/">Terraform</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cli/">Cli</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/configuracion/">Configuracion</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

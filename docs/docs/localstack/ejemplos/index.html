@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54755&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Ejemplos prácticos con LocalStack
+  #
+
+En este post te muestro diferentes formas de usar LocalStack con ejemplos prácticos y configuraciones útiles para diferentes escenarios de desarrollo.
+
+  🔧 Configurar AWS CLI para LocalStack
+  #
+
+
+  Crear un alias para AWS CLI local
+  #
+
+La forma más simple de usar AWS CLI con LocalStack:
+alias aws=&#34;aws --endpoint-url http://localhost:4566&#34;
+Ahora puedes usar comandos AWS normalmente:
+aws s3 ls
+aws dynamodb list-tables
+aws lambda list-functions
+
+  Usar variables de entorno
+  #
+
+export AWS_ENDPOINT_URL=http://localhost:4566
+export AWS_ACCESS_KEY_ID=test
+export AWS_SECRET_ACCESS_KEY=test
+export AWS_DEFAULT_REGION=us-east-1
+
+  🐳 Ejemplos con Docker
+  #
+
+
+  1. Imagen Docker personalizada
+  #
+
+Si tienes una imagen personalizada con herramientas preinstaladas:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:54755/docs/localstack/ejemplos/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Ejemplos Prácticos">
+  <meta property="og:description" content="Ejemplos prácticos con LocalStack # En este post te muestro diferentes formas de usar LocalStack con ejemplos prácticos y configuraciones útiles para diferentes escenarios de desarrollo.
+🔧 Configurar AWS CLI para LocalStack # Crear un alias para AWS CLI local # La forma más simple de usar AWS CLI con LocalStack:
+alias aws=&#34;aws --endpoint-url http://localhost:4566&#34; Ahora puedes usar comandos AWS normalmente:
+aws s3 ls aws dynamodb list-tables aws lambda list-functions Usar variables de entorno # export AWS_ENDPOINT_URL=http://localhost:4566 export AWS_ACCESS_KEY_ID=test export AWS_SECRET_ACCESS_KEY=test export AWS_DEFAULT_REGION=us-east-1 🐳 Ejemplos con Docker # 1. Imagen Docker personalizada # Si tienes una imagen personalizada con herramientas preinstaladas:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Ejemplos Prácticos | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:54755/docs/localstack/ejemplos/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.78b37f11bb81ed21b9d1258127076107d3aa994fa7954d25b416d2565478a2b3.js" integrity="sha256-eLN/EbuB7SG50SWBJwdhB9OqmU&#43;nlU0ltBbSVlR4orM=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="active">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Ejemplos Prácticos</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ejemplos-prácticos-con-localstack">Ejemplos prácticos con LocalStack</a>
+      <ul>
+        <li><a href="#-configurar-aws-cli-para-localstack">🔧 Configurar AWS CLI para LocalStack</a>
+          <ul>
+            <li><a href="#crear-un-alias-para-aws-cli-local">Crear un alias para AWS CLI local</a></li>
+            <li><a href="#usar-variables-de-entorno">Usar variables de entorno</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplos-con-docker">🐳 Ejemplos con Docker</a>
+          <ul>
+            <li><a href="#1-imagen-docker-personalizada">1. Imagen Docker personalizada</a></li>
+            <li><a href="#2-sandbox-completo-sin-mapear-nada">2. Sandbox completo (sin mapear nada)</a></li>
+            <li><a href="#3-compartir-docker-con-network-local">3. Compartir Docker con network local</a></li>
+          </ul>
+        </li>
+        <li><a href="#-scripts-útiles-para-automatización">📝 Scripts útiles para automatización</a>
+          <ul>
+            <li><a href="#script-de-inicialización">Script de inicialización</a></li>
+            <li><a href="#script-de-limpieza">Script de limpieza</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-de-workflow-completo">🔄 Ejemplo de workflow completo</a>
+          <ul>
+            <li><a href="#1-docker-compose-para-desarrollo">1. Docker Compose para desarrollo</a></li>
+            <li><a href="#2-makefile-para-automatización">2. Makefile para automatización</a></li>
+          </ul>
+        </li>
+        <li><a href="#-testing-con-localstack">🧪 Testing con LocalStack</a>
+          <ul>
+            <li><a href="#ejemplo-de-test-con-pytest">Ejemplo de test con pytest</a></li>
+          </ul>
+        </li>
+        <li><a href="#-consejos-y-mejores-prácticas">🎯 Consejos y mejores prácticas</a>
+          <ul>
+            <li><a href="#1-variables-de-entorno-para-configuración">1. Variables de entorno para configuración</a></li>
+            <li><a href="#2-healthcheck-personalizado">2. Healthcheck personalizado</a></li>
+            <li><a href="#3-configuración-para-cicd">3. Configuración para CI/CD</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="ejemplos-prácticos-con-localstack">
+  Ejemplos prácticos con LocalStack
+  <a class="anchor" href="#ejemplos-pr%c3%a1cticos-con-localstack">#</a>
+</h1>
+<p>En este post te muestro diferentes formas de usar LocalStack con ejemplos prácticos y configuraciones útiles para diferentes escenarios de desarrollo.</p>
+<h2 id="-configurar-aws-cli-para-localstack">
+  🔧 Configurar AWS CLI para LocalStack
+  <a class="anchor" href="#-configurar-aws-cli-para-localstack">#</a>
+</h2>
+<h3 id="crear-un-alias-para-aws-cli-local">
+  Crear un alias para AWS CLI local
+  <a class="anchor" href="#crear-un-alias-para-aws-cli-local">#</a>
+</h3>
+<p>La forma más simple de usar AWS CLI con LocalStack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias aws<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aws --endpoint-url http://localhost:4566&#34;</span>
+</span></span></code></pre></div><p>Ahora puedes usar comandos AWS normalmente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 ls
+</span></span><span style="display:flex;"><span>aws dynamodb list-tables
+</span></span><span style="display:flex;"><span>aws lambda list-functions
+</span></span></code></pre></div><h3 id="usar-variables-de-entorno">
+  Usar variables de entorno
+  <a class="anchor" href="#usar-variables-de-entorno">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export AWS_ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:4566
+</span></span><span style="display:flex;"><span>export AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>test
+</span></span><span style="display:flex;"><span>export AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>test
+</span></span><span style="display:flex;"><span>export AWS_DEFAULT_REGION<span style="color:#f92672">=</span>us-east-1
+</span></span></code></pre></div><h2 id="-ejemplos-con-docker">
+  🐳 Ejemplos con Docker
+  <a class="anchor" href="#-ejemplos-con-docker">#</a>
+</h2>
+<h3 id="1-imagen-docker-personalizada">
+  1. Imagen Docker personalizada
+  <a class="anchor" href="#1-imagen-docker-personalizada">#</a>
+</h3>
+<p>Si tienes una imagen personalizada con herramientas preinstaladas:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --network host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v ~/.ssh:/root/.ssh:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/app <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -w /app <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    yosoyfunes/cbff-local:v1.0.0
+</span></span></code></pre></div><h3 id="2-sandbox-completo-sin-mapear-nada">
+  2. Sandbox completo (sin mapear nada)
+  <a class="anchor" href="#2-sandbox-completo-sin-mapear-nada">#</a>
+</h3>
+<p>Para un entorno completamente aislado:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -ti <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --network host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -w /app <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    yosoyfunes/cbff-local:v1.0.0
+</span></span></code></pre></div><h3 id="3-compartir-docker-con-network-local">
+  3. Compartir Docker con network local
+  <a class="anchor" href="#3-compartir-docker-con-network-local">#</a>
+</h3>
+<p>Para proyectos que requieren acceso a módulos locales:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -ti -w /data <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --network host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v ~/.ssh:/root/.ssh:ro <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v /Users/matias/Projects/terraform_modules:/terraform_modules <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/app -w /app <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    yosoyfunes/cbff-local:v1.0.0
+</span></span></code></pre></div><h2 id="-scripts-útiles-para-automatización">
+  📝 Scripts útiles para automatización
+  <a class="anchor" href="#-scripts-%c3%batiles-para-automatizaci%c3%b3n">#</a>
+</h2>
+<h3 id="script-de-inicialización">
+  Script de inicialización
+  <a class="anchor" href="#script-de-inicializaci%c3%b3n">#</a>
+</h3>
+<p>Crea un archivo <code>init-localstack.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🚀 Iniciando LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verificar si LocalStack está corriendo</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! curl -s http://localhost:4566/health &gt; /dev/null; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;❌ LocalStack no está corriendo. Iniciando...&#34;</span>
+</span></span><span style="display:flex;"><span>    localstack start -d
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Esperar a que LocalStack esté listo</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;⏳ Esperando a que LocalStack esté listo...&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ! curl -s http://localhost:4566/health &gt; /dev/null; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>        sleep <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;✅ LocalStack está listo!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configurar alias</span>
+</span></span><span style="display:flex;"><span>alias aws<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aws --endpoint-url http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Crear recursos iniciales</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;📦 Creando recursos iniciales...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Crear bucket S3</span>
+</span></span><span style="display:flex;"><span>aws s3 mb s3://my-dev-bucket
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Crear tabla DynamoDB</span>
+</span></span><span style="display:flex;"><span>aws dynamodb create-table <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --table-name users <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --attribute-definitions AttributeName<span style="color:#f92672">=</span>id,AttributeType<span style="color:#f92672">=</span>S <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --key-schema AttributeName<span style="color:#f92672">=</span>id,KeyType<span style="color:#f92672">=</span>HASH <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --billing-mode PAY_PER_REQUEST
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🎉 Configuración completada!&#34;</span>
+</span></span></code></pre></div><h3 id="script-de-limpieza">
+  Script de limpieza
+  <a class="anchor" href="#script-de-limpieza">#</a>
+</h3>
+<p>Crea un archivo <code>cleanup-localstack.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🧹 Limpiando recursos de LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configurar alias</span>
+</span></span><span style="display:flex;"><span>alias aws<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aws --endpoint-url http://localhost:4566&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Eliminar buckets S3</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🗑️ Eliminando buckets S3...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> bucket in <span style="color:#66d9ef">$(</span>aws s3 ls | awk <span style="color:#e6db74">&#39;{print $3}&#39;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    aws s3 rb s3://$bucket --force
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Eliminar tablas DynamoDB</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🗑️ Eliminando tablas DynamoDB...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> table in <span style="color:#66d9ef">$(</span>aws dynamodb list-tables --query <span style="color:#e6db74">&#39;TableNames[]&#39;</span> --output text<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    aws dynamodb delete-table --table-name $table
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Eliminar funciones Lambda</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;🗑️ Eliminando funciones Lambda...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> in <span style="color:#66d9ef">$(</span>aws lambda list-functions --query <span style="color:#e6db74">&#39;Functions[].FunctionName&#39;</span> --output text<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    aws lambda delete-function --function-name $function
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;✅ Limpieza completada!&#34;</span>
+</span></span></code></pre></div><h2 id="-ejemplo-de-workflow-completo">
+  🔄 Ejemplo de workflow completo
+  <a class="anchor" href="#-ejemplo-de-workflow-completo">#</a>
+</h2>
+<h3 id="1-docker-compose-para-desarrollo">
+  1. Docker Compose para desarrollo
+  <a class="anchor" href="#1-docker-compose-para-desarrollo">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">localstack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">localstack/localstack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;4566:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">SERVICES=s3,dynamodb,lambda,iam,cloudformation</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DEBUG=1</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DATA_DIR=/tmp/localstack/data</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DOCKER_HOST=unix:///var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;/tmp/localstack:/tmp/localstack&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">app</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">localstack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AWS_ENDPOINT_URL=http://localstack:4566</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AWS_ACCESS_KEY_ID=test</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AWS_SECRET_ACCESS_KEY=test</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">AWS_DEFAULT_REGION=us-east-1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.:/app</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/app</span>
+</span></span></code></pre></div><h3 id="2-makefile-para-automatización">
+  2. Makefile para automatización
+  <a class="anchor" href="#2-makefile-para-automatizaci%c3%b3n">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> start stop test deploy clean
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">start</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;🚀 Iniciando LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>	docker-compose up -d localstack
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;⏳ Esperando a LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>	@while ! curl -s http://localhost:4566/health &gt; /dev/null; <span style="color:#66d9ef">do</span> sleep 2; <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;✅ LocalStack listo!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">stop</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;🛑 Deteniendo LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>	docker-compose down
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;🧪 Ejecutando tests...&#34;</span>
+</span></span><span style="display:flex;"><span>	pytest tests/ -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deploy</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;🚀 Desplegando infraestructura...&#34;</span>
+</span></span><span style="display:flex;"><span>	terraform init
+</span></span><span style="display:flex;"><span>	terraform plan -out<span style="color:#f92672">=</span>tfplan
+</span></span><span style="display:flex;"><span>	terraform apply tfplan
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;🧹 Limpiando recursos...&#34;</span>
+</span></span><span style="display:flex;"><span>	./cleanup-localstack.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">setup</span><span style="color:#f92672">:</span> start
+</span></span><span style="display:flex;"><span>	@echo <span style="color:#e6db74">&#34;📦 Configurando recursos iniciales...&#34;</span>
+</span></span><span style="display:flex;"><span>	./init-localstack.sh
+</span></span></code></pre></div><h2 id="-testing-con-localstack">
+  🧪 Testing con LocalStack
+  <a class="anchor" href="#-testing-con-localstack">#</a>
+</h2>
+<h3 id="ejemplo-de-test-con-pytest">
+  Ejemplo de test con pytest
+  <a class="anchor" href="#ejemplo-de-test-con-pytest">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> boto3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> moto <span style="color:#f92672">import</span> mock_s3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.fixture</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">s3_client</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> boto3<span style="color:#f92672">.</span>client(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;s3&#39;</span>,
+</span></span><span style="display:flex;"><span>        endpoint_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://localhost:4566&#39;</span>,
+</span></span><span style="display:flex;"><span>        aws_access_key_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;test&#39;</span>,
+</span></span><span style="display:flex;"><span>        aws_secret_access_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;test&#39;</span>,
+</span></span><span style="display:flex;"><span>        region_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;us-east-1&#39;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_create_bucket</span>(s3_client):
+</span></span><span style="display:flex;"><span>    bucket_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test-bucket&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Crear bucket</span>
+</span></span><span style="display:flex;"><span>    s3_client<span style="color:#f92672">.</span>create_bucket(Bucket<span style="color:#f92672">=</span>bucket_name)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Verificar que existe</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> s3_client<span style="color:#f92672">.</span>list_buckets()
+</span></span><span style="display:flex;"><span>    bucket_names <span style="color:#f92672">=</span> [bucket[<span style="color:#e6db74">&#39;Name&#39;</span>] <span style="color:#66d9ef">for</span> bucket <span style="color:#f92672">in</span> response[<span style="color:#e6db74">&#39;Buckets&#39;</span>]]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> bucket_name <span style="color:#f92672">in</span> bucket_names
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_upload_file</span>(s3_client):
+</span></span><span style="display:flex;"><span>    bucket_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test-bucket&#39;</span>
+</span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test-file.txt&#39;</span>
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hello LocalStack!&#39;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Crear bucket</span>
+</span></span><span style="display:flex;"><span>    s3_client<span style="color:#f92672">.</span>create_bucket(Bucket<span style="color:#f92672">=</span>bucket_name)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Subir archivo</span>
+</span></span><span style="display:flex;"><span>    s3_client<span style="color:#f92672">.</span>put_object(
+</span></span><span style="display:flex;"><span>        Bucket<span style="color:#f92672">=</span>bucket_name,
+</span></span><span style="display:flex;"><span>        Key<span style="color:#f92672">=</span>key,
+</span></span><span style="display:flex;"><span>        Body<span style="color:#f92672">=</span>content
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Verificar contenido</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> s3_client<span style="color:#f92672">.</span>get_object(Bucket<span style="color:#f92672">=</span>bucket_name, Key<span style="color:#f92672">=</span>key)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> response[<span style="color:#e6db74">&#39;Body&#39;</span>]<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>decode() <span style="color:#f92672">==</span> content
+</span></span></code></pre></div><h2 id="-consejos-y-mejores-prácticas">
+  🎯 Consejos y mejores prácticas
+  <a class="anchor" href="#-consejos-y-mejores-pr%c3%a1cticas">#</a>
+</h2>
+<h3 id="1-variables-de-entorno-para-configuración">
+  1. Variables de entorno para configuración
+  <a class="anchor" href="#1-variables-de-entorno-para-configuraci%c3%b3n">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># .env file</span>
+</span></span><span style="display:flex;"><span>LOCALSTACK_ENDPOINT<span style="color:#f92672">=</span>http://localhost:4566
+</span></span><span style="display:flex;"><span>AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>test
+</span></span><span style="display:flex;"><span>AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>test
+</span></span><span style="display:flex;"><span>AWS_DEFAULT_REGION<span style="color:#f92672">=</span>us-east-1
+</span></span><span style="display:flex;"><span>DEBUG<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h3 id="2-healthcheck-personalizado">
+  2. Healthcheck personalizado
+  <a class="anchor" href="#2-healthcheck-personalizado">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>check_localstack<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    local max_attempts<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    local attempt<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $attempt -le $max_attempts <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> curl -s http://localhost:4566/health | grep -q <span style="color:#e6db74">&#34;running&#34;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>            echo <span style="color:#e6db74">&#34;✅ LocalStack está listo!&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;⏳ Intento </span>$attempt<span style="color:#e6db74">/</span>$max_attempts<span style="color:#e6db74"> - Esperando LocalStack...&#34;</span>
+</span></span><span style="display:flex;"><span>        sleep <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">((</span>attempt++<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;❌ LocalStack no respondió después de </span>$max_attempts<span style="color:#e6db74"> intentos&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="3-configuración-para-cicd">
+  3. Configuración para CI/CD
+  <a class="anchor" href="#3-configuraci%c3%b3n-para-cicd">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># GitHub Actions example</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Test with LocalStack</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>: [<span style="color:#ae81ff">push, pull_request]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">test</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">localstack</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">localstack/localstack</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#ae81ff">4566</span>:<span style="color:#ae81ff">4566</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">SERVICES</span>: <span style="color:#ae81ff">s3,dynamodb,lambda</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">DEBUG</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Wait for LocalStack</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          while ! curl -s http://localhost:4566/health; do
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            sleep 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          done</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run tests</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          export AWS_ENDPOINT_URL=http://localhost:4566
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          pytest tests/</span>
+</span></span></code></pre></div><p>¡Con estos ejemplos puedes aprovechar al máximo LocalStack en tus proyectos de desarrollo!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/localstack/ejemplos.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ejemplos-prácticos-con-localstack">Ejemplos prácticos con LocalStack</a>
+      <ul>
+        <li><a href="#-configurar-aws-cli-para-localstack">🔧 Configurar AWS CLI para LocalStack</a>
+          <ul>
+            <li><a href="#crear-un-alias-para-aws-cli-local">Crear un alias para AWS CLI local</a></li>
+            <li><a href="#usar-variables-de-entorno">Usar variables de entorno</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplos-con-docker">🐳 Ejemplos con Docker</a>
+          <ul>
+            <li><a href="#1-imagen-docker-personalizada">1. Imagen Docker personalizada</a></li>
+            <li><a href="#2-sandbox-completo-sin-mapear-nada">2. Sandbox completo (sin mapear nada)</a></li>
+            <li><a href="#3-compartir-docker-con-network-local">3. Compartir Docker con network local</a></li>
+          </ul>
+        </li>
+        <li><a href="#-scripts-útiles-para-automatización">📝 Scripts útiles para automatización</a>
+          <ul>
+            <li><a href="#script-de-inicialización">Script de inicialización</a></li>
+            <li><a href="#script-de-limpieza">Script de limpieza</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ejemplo-de-workflow-completo">🔄 Ejemplo de workflow completo</a>
+          <ul>
+            <li><a href="#1-docker-compose-para-desarrollo">1. Docker Compose para desarrollo</a></li>
+            <li><a href="#2-makefile-para-automatización">2. Makefile para automatización</a></li>
+          </ul>
+        </li>
+        <li><a href="#-testing-con-localstack">🧪 Testing con LocalStack</a>
+          <ul>
+            <li><a href="#ejemplo-de-test-con-pytest">Ejemplo de test con pytest</a></li>
+          </ul>
+        </li>
+        <li><a href="#-consejos-y-mejores-prácticas">🎯 Consejos y mejores prácticas</a>
+          <ul>
+            <li><a href="#1-variables-de-entorno-para-configuración">1. Variables de entorno para configuración</a></li>
+            <li><a href="#2-healthcheck-personalizado">2. Healthcheck personalizado</a></li>
+            <li><a href="#3-configuración-para-cicd">3. Configuración para CI/CD</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

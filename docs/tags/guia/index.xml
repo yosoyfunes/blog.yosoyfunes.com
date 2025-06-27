@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guia on Blog de Matias - DevOps &amp; Cloud</title>
+    <link>http://localhost:54755/tags/guia/</link>
+    <description>Recent content in Guia on Blog de Matias - DevOps &amp; Cloud</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 27 Jun 2024 04:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:54755/tags/guia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LocalStack: Guía completa para desarrollo local con AWS</title>
+      <link>http://localhost:54755/posts/localstack-guia-completa/</link>
+      <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
+      <guid>http://localhost:54755/posts/localstack-guia-completa/</guid>
+      <description>&lt;p&gt;LocalStack es una herramienta esencial para cualquier desarrollador que trabaje con servicios de AWS. Te permite ejecutar servicios AWS localmente, ahorrando costos y acelerando el desarrollo.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-qué-es-localstack&#34;&gt;&#xA;  🎯 ¿Qué es LocalStack?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-qu%c3%a9-es-localstack&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;LocalStack es un proyecto OpenSource que simula los servicios de AWS en tu máquina local. Es perfecto para:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Desarrollo local&lt;/strong&gt; sin costos de AWS&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Testing&lt;/strong&gt; de infraestructura como código&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Prototipado&lt;/strong&gt; rápido de arquitecturas&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CI/CD&lt;/strong&gt; con pruebas automatizadas&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-serie-de-posts-sobre-localstack&#34;&gt;&#xA;  📚 Serie de posts sobre LocalStack&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-serie-de-posts-sobre-localstack&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;He creado una serie completa de posts para que domines LocalStack desde cero:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

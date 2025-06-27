@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on yosoyfunes</title>
-    <link>https://blog.yosoyfunes.com/categories/</link>
-    <description>Recent content in Categories on yosoyfunes</description>
-    <generator>Hugo -- 0.147.3</generator>
+    <title>Categories on Blog de Matias - DevOps &amp; Cloud</title>
+    <link>http://localhost:54755/categories/</link>
+    <description>Recent content in Categories on Blog de Matias - DevOps &amp; Cloud</description>
+    <generator>Hugo</generator>
     <language>es</language>
-    <atom:link href="https://blog.yosoyfunes.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 May 2025 22:03:03 -0300</lastBuildDate>
+    <atom:link href="http://localhost:54755/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>http://localhost:54755/categories/AWS/</link>
+      <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
+      <guid>http://localhost:54755/categories/AWS/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>http://localhost:54755/categories/DevOps/</link>
+      <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
+      <guid>http://localhost:54755/categories/DevOps/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutoriales</title>
+      <link>http://localhost:54755/categories/Tutoriales/</link>
+      <pubDate>Thu, 27 Jun 2024 04:00:00 +0000</pubDate>
+      <guid>http://localhost:54755/categories/Tutoriales/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Infrastructure as Code</title>
+      <link>http://localhost:54755/categories/Infrastructure-as-Code/</link>
+      <pubDate>Thu, 27 Jun 2024 02:00:00 +0000</pubDate>
+      <guid>http://localhost:54755/categories/Infrastructure-as-Code/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

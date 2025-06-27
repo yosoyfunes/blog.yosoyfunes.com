@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54755&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Cómo instalar LocalStack
+  #
+
+LocalStack es un proyecto OpenSource que nos permite tener localmente los mismos servicios que podemos utilizar en la nube de AWS. Es perfecto para desarrollo y testing sin incurrir en costos de AWS.
+
+  📋 Requisitos previos
+  #
+
+
+Docker instalado en tu sistema
+Python 3.7&#43; (para instalación local)
+AWS CLI configurado
+
+
+  🚀 Métodos de instalación
+  #
+
+
+  Método 1: Instalación local con pip
+  #
+
+pip install localstack
+
+  Método 2: Usando Docker Compose (Recomendado)
+  #
+
+Crea un archivo docker-compose.yaml:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:54755/docs/localstack/instalacion/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="Instalación">
+  <meta property="og:description" content="Cómo instalar LocalStack # LocalStack es un proyecto OpenSource que nos permite tener localmente los mismos servicios que podemos utilizar en la nube de AWS. Es perfecto para desarrollo y testing sin incurrir en costos de AWS.
+📋 Requisitos previos # Docker instalado en tu sistema Python 3.7&#43; (para instalación local) AWS CLI configurado 🚀 Métodos de instalación # Método 1: Instalación local con pip # pip install localstack Método 2: Usando Docker Compose (Recomendado) # Crea un archivo docker-compose.yaml:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Instalación | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:54755/docs/localstack/instalacion/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.78b37f11bb81ed21b9d1258127076107d3aa994fa7954d25b416d2565478a2b3.js" integrity="sha256-eLN/EbuB7SG50SWBJwdhB9OqmU&#43;nlU0ltBbSVlR4orM=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="active">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Instalación</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cómo-instalar-localstack">Cómo instalar LocalStack</a>
+      <ul>
+        <li><a href="#-requisitos-previos">📋 Requisitos previos</a></li>
+        <li><a href="#-métodos-de-instalación">🚀 Métodos de instalación</a>
+          <ul>
+            <li><a href="#método-1-instalación-local-con-pip">Método 1: Instalación local con pip</a></li>
+            <li><a href="#método-2-usando-docker-compose-recomendado">Método 2: Usando Docker Compose (Recomendado)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-iniciar-localstack">▶️ Iniciar LocalStack</a>
+          <ul>
+            <li><a href="#por-consola-instalación-local">Por consola (instalación local)</a></li>
+            <li><a href="#con-docker-compose">Con Docker Compose</a></li>
+            <li><a href="#con-docker-run">Con Docker run</a></li>
+          </ul>
+        </li>
+        <li><a href="#-verificar-la-instalación">✅ Verificar la instalación</a></li>
+        <li><a href="#-enlaces-útiles">🔗 Enlaces útiles</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="cómo-instalar-localstack">
+  Cómo instalar LocalStack
+  <a class="anchor" href="#c%c3%b3mo-instalar-localstack">#</a>
+</h1>
+<p>LocalStack es un proyecto OpenSource que nos permite tener localmente los mismos servicios que podemos utilizar en la nube de AWS. Es perfecto para desarrollo y testing sin incurrir en costos de AWS.</p>
+<h2 id="-requisitos-previos">
+  📋 Requisitos previos
+  <a class="anchor" href="#-requisitos-previos">#</a>
+</h2>
+<ul>
+<li>Docker instalado en tu sistema</li>
+<li>Python 3.7+ (para instalación local)</li>
+<li>AWS CLI configurado</li>
+</ul>
+<h2 id="-métodos-de-instalación">
+  🚀 Métodos de instalación
+  <a class="anchor" href="#-m%c3%a9todos-de-instalaci%c3%b3n">#</a>
+</h2>
+<h3 id="método-1-instalación-local-con-pip">
+  Método 1: Instalación local con pip
+  <a class="anchor" href="#m%c3%a9todo-1-instalaci%c3%b3n-local-con-pip">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install localstack
+</span></span></code></pre></div><h3 id="método-2-usando-docker-compose-recomendado">
+  Método 2: Usando Docker Compose (Recomendado)
+  <a class="anchor" href="#m%c3%a9todo-2-usando-docker-compose-recomendado">#</a>
+</h3>
+<p>Crea un archivo <code>docker-compose.yaml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.8&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">localstack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#e6db74">&#34;${LOCALSTACK_DOCKER_NAME-localstack_main}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">localstack/localstack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">network_mode</span>: <span style="color:#ae81ff">bridge</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;127.0.0.1:53:53&#34;</span>                <span style="color:#75715e"># only required for Pro (DNS)</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;127.0.0.1:53:53/udp&#34;</span>            <span style="color:#75715e"># only required for Pro (DNS)</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;127.0.0.1:443:443&#34;</span>              <span style="color:#75715e"># only required for Pro (LocalStack HTTPS Edge Proxy)</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;127.0.0.1:4510-4559:4510-4559&#34;</span>  <span style="color:#75715e"># external service port range</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;127.0.0.1:4566:4566&#34;</span>            <span style="color:#75715e"># LocalStack Edge Proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DEBUG=${DEBUG-}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DATA_DIR=${DATA_DIR-}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">DOCKER_HOST=unix:///var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;${TMPDIR:-/tmp}/localstack:/tmp/localstack&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span>
+</span></span></code></pre></div><h2 id="-iniciar-localstack">
+  ▶️ Iniciar LocalStack
+  <a class="anchor" href="#-iniciar-localstack">#</a>
+</h2>
+<h3 id="por-consola-instalación-local">
+  Por consola (instalación local)
+  <a class="anchor" href="#por-consola-instalaci%c3%b3n-local">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>localstack start -d
+</span></span></code></pre></div><h3 id="con-docker-compose">
+  Con Docker Compose
+  <a class="anchor" href="#con-docker-compose">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><h3 id="con-docker-run">
+  Con Docker run
+  <a class="anchor" href="#con-docker-run">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
+</span></span></code></pre></div><h2 id="-verificar-la-instalación">
+  ✅ Verificar la instalación
+  <a class="anchor" href="#-verificar-la-instalaci%c3%b3n">#</a>
+</h2>
+<p>Una vez que LocalStack esté ejecutándose, puedes verificar que funciona correctamente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Verificar el estado de LocalStack</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:4566/health
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Listar servicios disponibles</span>
+</span></span><span style="display:flex;"><span>aws --endpoint-url<span style="color:#f92672">=</span>http://localhost:4566 s3 ls
+</span></span></code></pre></div><h2 id="-enlaces-útiles">
+  🔗 Enlaces útiles
+  <a class="anchor" href="#-enlaces-%c3%batiles">#</a>
+</h2>
+<ul>
+<li>
+  <a href="https://docs.localstack.cloud/getting-started/installation/">Documentación oficial de LocalStack</a></li>
+<li>
+  <a href="https://github.com/localstack/localstack">Repositorio en GitHub</a></li>
+</ul>
+<p>¡Ahora tienes LocalStack funcionando localmente y puedes empezar a desarrollar con servicios AWS sin costo!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/docs/localstack/instalacion.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cómo-instalar-localstack">Cómo instalar LocalStack</a>
+      <ul>
+        <li><a href="#-requisitos-previos">📋 Requisitos previos</a></li>
+        <li><a href="#-métodos-de-instalación">🚀 Métodos de instalación</a>
+          <ul>
+            <li><a href="#método-1-instalación-local-con-pip">Método 1: Instalación local con pip</a></li>
+            <li><a href="#método-2-usando-docker-compose-recomendado">Método 2: Usando Docker Compose (Recomendado)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-iniciar-localstack">▶️ Iniciar LocalStack</a>
+          <ul>
+            <li><a href="#por-consola-instalación-local">Por consola (instalación local)</a></li>
+            <li><a href="#con-docker-compose">Con Docker Compose</a></li>
+            <li><a href="#con-docker-run">Con Docker run</a></li>
+          </ul>
+        </li>
+        <li><a href="#-verificar-la-instalación">✅ Verificar la instalación</a></li>
+        <li><a href="#-enlaces-útiles">🔗 Enlaces útiles</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

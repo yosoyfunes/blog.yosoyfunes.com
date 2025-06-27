@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54755&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LocalStack es una herramienta esencial para cualquier desarrollador que trabaje con servicios de AWS. Te permite ejecutar servicios AWS localmente, ahorrando costos y acelerando el desarrollo.
+
+  🎯 ¿Qué es LocalStack?
+  #
+
+LocalStack es un proyecto OpenSource que simula los servicios de AWS en tu máquina local. Es perfecto para:
+
+Desarrollo local sin costos de AWS
+Testing de infraestructura como código
+Prototipado rápido de arquitecturas
+CI/CD con pruebas automatizadas
+
+
+  📚 Serie de posts sobre LocalStack
+  #
+
+He creado una serie completa de posts para que domines LocalStack desde cero:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:54755/posts/localstack-guia-completa/">
+  <meta property="og:site_name" content="Blog de Matias - DevOps & Cloud">
+  <meta property="og:title" content="LocalStack: Guía completa para desarrollo local con AWS">
+  <meta property="og:description" content="LocalStack es una herramienta esencial para cualquier desarrollador que trabaje con servicios de AWS. Te permite ejecutar servicios AWS localmente, ahorrando costos y acelerando el desarrollo.
+🎯 ¿Qué es LocalStack? # LocalStack es un proyecto OpenSource que simula los servicios de AWS en tu máquina local. Es perfecto para:
+Desarrollo local sin costos de AWS Testing de infraestructura como código Prototipado rápido de arquitecturas CI/CD con pruebas automatizadas 📚 Serie de posts sobre LocalStack # He creado una serie completa de posts para que domines LocalStack desde cero:">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-27T04:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-27T04:00:00+00:00">
+    <meta property="article:tag" content="Localstack">
+    <meta property="article:tag" content="Aws">
+    <meta property="article:tag" content="Desarrollo">
+    <meta property="article:tag" content="Guia">
+<title>LocalStack: Guía completa para desarrollo local con AWS | Blog de Matias - DevOps &amp; Cloud</title>
+<link rel="icon" href="/favicon.ico" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:54755/posts/localstack-guia-completa/">
+<link rel="stylesheet" href="/book.min.9adb8ebbd2b7c0d066fb01527510676c64916f6b7ba373f7d0ab4abe97ed4ae8.css" integrity="sha256-mtuOu9K3wNBm&#43;wFSdRBnbGSRb2t7o3P30KtKvpftSug=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.78b37f11bb81ed21b9d1258127076107d3aa994fa7954d25b416d2565478a2b3.js" integrity="sha256-eLN/EbuB7SG50SWBJwdhB9OqmU&#43;nlU0ltBbSVlR4orM=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Blog de Matias - DevOps &amp; Cloud</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/" class="">LocalStack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/instalacion/" class="">Instalación</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/profile/" class="">Configuración de Perfiles</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/terraform/" class="">Terraform con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/cloudformation/" class="">CloudFormation con LocalStack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/localstack/ejemplos/" class="">Ejemplos Prácticos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>LocalStack: Guía completa para desarrollo local con AWS</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-qué-es-localstack">🎯 ¿Qué es LocalStack?</a></li>
+        <li><a href="#-serie-de-posts-sobre-localstack">📚 Serie de posts sobre LocalStack</a>
+          <ul>
+            <li><a href="#1-cómo-instalar-localstack">1. <a href="/posts/localstack-instalacion/">Cómo instalar LocalStack</a></a></li>
+            <li><a href="#2-configurar-perfil-aws-para-localstack">2. <a href="/posts/localstack-profile/">Configurar perfil AWS para LocalStack</a></a></li>
+            <li><a href="#3-usar-terraform-con-localstack">3. <a href="/posts/localstack-terraform/">Usar Terraform con LocalStack</a></a></li>
+            <li><a href="#4-usar-cloudformation-con-localstack">4. <a href="/posts/localstack-cloudformation/">Usar CloudFormation con LocalStack</a></a></li>
+            <li><a href="#5-ejemplos-prácticos-con-localstack">5. <a href="/posts/localstack-ejemplos/">Ejemplos prácticos con LocalStack</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-servicios-aws-soportados">🚀 Servicios AWS soportados</a>
+          <ul>
+            <li><a href="#servicios-básicos-community-edition">Servicios básicos (Community Edition)</a></li>
+            <li><a href="#servicios-avanzados-pro-edition">Servicios avanzados (Pro Edition)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-comunes">🛠️ Casos de uso comunes</a>
+          <ul>
+            <li><a href="#desarrollo-de-aplicaciones-serverless">Desarrollo de aplicaciones serverless</a></li>
+            <li><a href="#testing-de-infraestructura">Testing de infraestructura</a></li>
+            <li><a href="#prototipado-de-arquitecturas">Prototipado de arquitecturas</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comparación-localstack-vs-aws-real">📊 Comparación: LocalStack vs AWS Real</a></li>
+        <li><a href="#-beneficios-de-usar-localstack">🎉 Beneficios de usar LocalStack</a>
+          <ul>
+            <li><a href="#para-desarrolladores">Para desarrolladores</a></li>
+            <li><a href="#para-equipos">Para equipos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">🔗 Recursos adicionales</a></li>
+        <li><a href="#-próximos-pasos">🎯 Próximos pasos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    LocalStack: Guía completa para desarrollo local con AWS
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>June 27, 2024</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/DevOps/">DevOps</a>, 
+      <a href="/categories/AWS/">AWS</a>, 
+      <a href="/categories/Tutoriales/">Tutoriales</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/localstack/">Localstack</a>, 
+      <a href="/tags/aws/">Aws</a>, 
+      <a href="/tags/desarrollo/">Desarrollo</a>, 
+      <a href="/tags/guia/">Guia</a>
+  </div>
+  
+
+
+  <div class="book-post-content"><p>LocalStack es una herramienta esencial para cualquier desarrollador que trabaje con servicios de AWS. Te permite ejecutar servicios AWS localmente, ahorrando costos y acelerando el desarrollo.</p>
+<h2 id="-qué-es-localstack">
+  🎯 ¿Qué es LocalStack?
+  <a class="anchor" href="#-qu%c3%a9-es-localstack">#</a>
+</h2>
+<p>LocalStack es un proyecto OpenSource que simula los servicios de AWS en tu máquina local. Es perfecto para:</p>
+<ul>
+<li><strong>Desarrollo local</strong> sin costos de AWS</li>
+<li><strong>Testing</strong> de infraestructura como código</li>
+<li><strong>Prototipado</strong> rápido de arquitecturas</li>
+<li><strong>CI/CD</strong> con pruebas automatizadas</li>
+</ul>
+<h2 id="-serie-de-posts-sobre-localstack">
+  📚 Serie de posts sobre LocalStack
+  <a class="anchor" href="#-serie-de-posts-sobre-localstack">#</a>
+</h2>
+<p>He creado una serie completa de posts para que domines LocalStack desde cero:</p>
+<h3 id="1-cómo-instalar-localstack">
+  1. 
+  <a href="/posts/localstack-instalacion/">Cómo instalar LocalStack</a>
+  <a class="anchor" href="#1-c%c3%b3mo-instalar-localstack">#</a>
+</h3>
+<ul>
+<li>Instalación con pip y Docker</li>
+<li>Configuración con Docker Compose</li>
+<li>Verificación de la instalación</li>
+<li>Enlaces a documentación oficial</li>
+</ul>
+<h3 id="2-configurar-perfil-aws-para-localstack">
+  2. 
+  <a href="/posts/localstack-profile/">Configurar perfil AWS para LocalStack</a>
+  <a class="anchor" href="#2-configurar-perfil-aws-para-localstack">#</a>
+</h3>
+<ul>
+<li>Configuración de perfiles AWS</li>
+<li>Alternancia entre entornos local y AWS</li>
+<li>Scripts y alias útiles</li>
+<li>Mejores prácticas de seguridad</li>
+</ul>
+<h3 id="3-usar-terraform-con-localstack">
+  3. 
+  <a href="/posts/localstack-terraform/">Usar Terraform con LocalStack</a>
+  <a class="anchor" href="#3-usar-terraform-con-localstack">#</a>
+</h3>
+<ul>
+<li>Configuración del provider AWS</li>
+<li>Ejemplos prácticos con S3 y DynamoDB</li>
+<li>Backend remoto con LocalStack</li>
+<li>Verificación de recursos creados</li>
+</ul>
+<h3 id="4-usar-cloudformation-con-localstack">
+  4. 
+  <a href="/posts/localstack-cloudformation/">Usar CloudFormation con LocalStack</a>
+  <a class="anchor" href="#4-usar-cloudformation-con-localstack">#</a>
+</h3>
+<ul>
+<li>Templates básicos y avanzados</li>
+<li>Gestión de stacks localmente</li>
+<li>Comandos útiles de CloudFormation</li>
+<li>Validación de templates</li>
+</ul>
+<h3 id="5-ejemplos-prácticos-con-localstack">
+  5. 
+  <a href="/posts/localstack-ejemplos/">Ejemplos prácticos con LocalStack</a>
+  <a class="anchor" href="#5-ejemplos-pr%c3%a1cticos-con-localstack">#</a>
+</h3>
+<ul>
+<li>Configuraciones con Docker</li>
+<li>Scripts de automatización</li>
+<li>Testing con pytest</li>
+<li>Integración con CI/CD</li>
+</ul>
+<h2 id="-servicios-aws-soportados">
+  🚀 Servicios AWS soportados
+  <a class="anchor" href="#-servicios-aws-soportados">#</a>
+</h2>
+<p>LocalStack soporta una amplia gama de servicios AWS:</p>
+<h3 id="servicios-básicos-community-edition">
+  Servicios básicos (Community Edition)
+  <a class="anchor" href="#servicios-b%c3%a1sicos-community-edition">#</a>
+</h3>
+<ul>
+<li><strong>S3</strong> - Simple Storage Service</li>
+<li><strong>DynamoDB</strong> - Base de datos NoSQL</li>
+<li><strong>Lambda</strong> - Funciones serverless</li>
+<li><strong>API Gateway</strong> - APIs REST y WebSocket</li>
+<li><strong>CloudFormation</strong> - Infrastructure as Code</li>
+<li><strong>IAM</strong> - Identity and Access Management</li>
+<li><strong>SQS</strong> - Simple Queue Service</li>
+<li><strong>SNS</strong> - Simple Notification Service</li>
+</ul>
+<h3 id="servicios-avanzados-pro-edition">
+  Servicios avanzados (Pro Edition)
+  <a class="anchor" href="#servicios-avanzados-pro-edition">#</a>
+</h3>
+<ul>
+<li><strong>ECS/EKS</strong> - Container services</li>
+<li><strong>RDS</strong> - Relational Database Service</li>
+<li><strong>ElastiCache</strong> - In-memory caching</li>
+<li><strong>Kinesis</strong> - Real-time data streaming</li>
+<li><strong>CloudWatch</strong> - Monitoring y logging</li>
+</ul>
+<h2 id="-casos-de-uso-comunes">
+  🛠️ Casos de uso comunes
+  <a class="anchor" href="#-casos-de-uso-comunes">#</a>
+</h2>
+<h3 id="desarrollo-de-aplicaciones-serverless">
+  Desarrollo de aplicaciones serverless
+  <a class="anchor" href="#desarrollo-de-aplicaciones-serverless">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Crear función Lambda</span>
+</span></span><span style="display:flex;"><span>aws lambda create-function <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --endpoint-url http://localhost:4566 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --function-name my-function <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --runtime python3.9 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --role arn:aws:iam::123456789012:role/lambda-role <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --handler index.handler <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --zip-file fileb://function.zip
+</span></span></code></pre></div><h3 id="testing-de-infraestructura">
+  Testing de infraestructura
+  <a class="anchor" href="#testing-de-infraestructura">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Ejecutar tests con pytest</span>
+</span></span><span style="display:flex;"><span>pytest tests/ --localstack-endpoint<span style="color:#f92672">=</span>http://localhost:4566
+</span></span></code></pre></div><h3 id="prototipado-de-arquitecturas">
+  Prototipado de arquitecturas
+  <a class="anchor" href="#prototipado-de-arquitecturas">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># docker-compose.yml para stack completo</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">localstack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">localstack/localstack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;4566:4566&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">SERVICES=s3,dynamodb,lambda,apigateway</span>
+</span></span></code></pre></div><h2 id="-comparación-localstack-vs-aws-real">
+  📊 Comparación: LocalStack vs AWS Real
+  <a class="anchor" href="#-comparaci%c3%b3n-localstack-vs-aws-real">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Aspecto</th>
+          <th>LocalStack</th>
+          <th>AWS Real</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Costo</strong></td>
+          <td>Gratuito</td>
+          <td>Pago por uso</td>
+      </tr>
+      <tr>
+          <td><strong>Velocidad</strong></td>
+          <td>Muy rápida</td>
+          <td>Depende de la región</td>
+      </tr>
+      <tr>
+          <td><strong>Disponibilidad</strong></td>
+          <td>Offline</td>
+          <td>Requiere internet</td>
+      </tr>
+      <tr>
+          <td><strong>Servicios</strong></td>
+          <td>Subconjunto</td>
+          <td>Todos los servicios</td>
+      </tr>
+      <tr>
+          <td><strong>Datos</strong></td>
+          <td>Temporales</td>
+          <td>Persistentes</td>
+      </tr>
+      <tr>
+          <td><strong>Escalabilidad</strong></td>
+          <td>Limitada</td>
+          <td>Ilimitada</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-beneficios-de-usar-localstack">
+  🎉 Beneficios de usar LocalStack
+  <a class="anchor" href="#-beneficios-de-usar-localstack">#</a>
+</h2>
+<h3 id="para-desarrolladores">
+  Para desarrolladores
+  <a class="anchor" href="#para-desarrolladores">#</a>
+</h3>
+<ul>
+<li>⚡ <strong>Desarrollo más rápido</strong> - Sin latencia de red</li>
+<li>💰 <strong>Sin costos</strong> - Prueba sin límites</li>
+<li>🔒 <strong>Datos seguros</strong> - Todo permanece local</li>
+<li>🧪 <strong>Testing fácil</strong> - Entorno controlado</li>
+</ul>
+<h3 id="para-equipos">
+  Para equipos
+  <a class="anchor" href="#para-equipos">#</a>
+</h3>
+<ul>
+<li>🔄 <strong>CI/CD mejorado</strong> - Tests automatizados</li>
+<li>📈 <strong>Productividad</strong> - Menos tiempo de setup</li>
+<li>🎯 <strong>Consistencia</strong> - Mismo entorno para todos</li>
+<li>🚀 <strong>Despliegues seguros</strong> - Validación previa</li>
+</ul>
+<h2 id="-recursos-adicionales">
+  🔗 Recursos adicionales
+  <a class="anchor" href="#-recursos-adicionales">#</a>
+</h2>
+<ul>
+<li>
+  <a href="https://docs.localstack.cloud/">Documentación oficial de LocalStack</a></li>
+<li>
+  <a href="https://github.com/localstack/localstack">Repositorio en GitHub</a></li>
+<li>
+  <a href="https://localstack.cloud/contact/">Comunidad en Slack</a></li>
+<li>
+  <a href="https://github.com/localstack/localstack/tree/master/examples">Ejemplos en GitHub</a></li>
+</ul>
+<h2 id="-próximos-pasos">
+  🎯 Próximos pasos
+  <a class="anchor" href="#-pr%c3%b3ximos-pasos">#</a>
+</h2>
+<ol>
+<li><strong>Instala LocalStack</strong> siguiendo la 
+  <a href="/posts/localstack-instalacion/">guía de instalación</a></li>
+<li><strong>Configura tu perfil</strong> con la 
+  <a href="/posts/localstack-profile/">guía de configuración</a></li>
+<li><strong>Prueba con Terraform</strong> usando los 
+  <a href="/posts/localstack-terraform/">ejemplos prácticos</a></li>
+<li><strong>Explora CloudFormation</strong> con los 
+  <a href="/posts/localstack-cloudformation/">templates de ejemplo</a></li>
+<li><strong>Automatiza tu workflow</strong> con los 
+  <a href="/posts/localstack-ejemplos/">scripts y ejemplos</a></li>
+</ol>
+<p>¡Comienza tu journey con LocalStack y lleva tu desarrollo con AWS al siguiente nivel!</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/yosoyfunes/blog.yosoyfunes.com/edit/main/content/posts/localstack-guia-completa.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-qué-es-localstack">🎯 ¿Qué es LocalStack?</a></li>
+        <li><a href="#-serie-de-posts-sobre-localstack">📚 Serie de posts sobre LocalStack</a>
+          <ul>
+            <li><a href="#1-cómo-instalar-localstack">1. <a href="/posts/localstack-instalacion/">Cómo instalar LocalStack</a></a></li>
+            <li><a href="#2-configurar-perfil-aws-para-localstack">2. <a href="/posts/localstack-profile/">Configurar perfil AWS para LocalStack</a></a></li>
+            <li><a href="#3-usar-terraform-con-localstack">3. <a href="/posts/localstack-terraform/">Usar Terraform con LocalStack</a></a></li>
+            <li><a href="#4-usar-cloudformation-con-localstack">4. <a href="/posts/localstack-cloudformation/">Usar CloudFormation con LocalStack</a></a></li>
+            <li><a href="#5-ejemplos-prácticos-con-localstack">5. <a href="/posts/localstack-ejemplos/">Ejemplos prácticos con LocalStack</a></a></li>
+          </ul>
+        </li>
+        <li><a href="#-servicios-aws-soportados">🚀 Servicios AWS soportados</a>
+          <ul>
+            <li><a href="#servicios-básicos-community-edition">Servicios básicos (Community Edition)</a></li>
+            <li><a href="#servicios-avanzados-pro-edition">Servicios avanzados (Pro Edition)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-casos-de-uso-comunes">🛠️ Casos de uso comunes</a>
+          <ul>
+            <li><a href="#desarrollo-de-aplicaciones-serverless">Desarrollo de aplicaciones serverless</a></li>
+            <li><a href="#testing-de-infraestructura">Testing de infraestructura</a></li>
+            <li><a href="#prototipado-de-arquitecturas">Prototipado de arquitecturas</a></li>
+          </ul>
+        </li>
+        <li><a href="#-comparación-localstack-vs-aws-real">📊 Comparación: LocalStack vs AWS Real</a></li>
+        <li><a href="#-beneficios-de-usar-localstack">🎉 Beneficios de usar LocalStack</a>
+          <ul>
+            <li><a href="#para-desarrolladores">Para desarrolladores</a></li>
+            <li><a href="#para-equipos">Para equipos</a></li>
+          </ul>
+        </li>
+        <li><a href="#-recursos-adicionales">🔗 Recursos adicionales</a></li>
+        <li><a href="#-próximos-pasos">🎯 Próximos pasos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
